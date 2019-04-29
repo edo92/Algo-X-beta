@@ -1,0 +1,22 @@
+#loginBtn small{
+    font-weight: 500;
+    color:white;
+}
+
+.nav-btn-color{
+    background: hsla(0, 0%, 100%, 0.05)!important;
+    border-radius: 10px !important;
+    display: block !important;
+    min-width: 32px !important;
+    text-decoration: none !important;
+    border: 1px solid #0e4fc5c2 !important;
+    height:34px !important;
+}
+
+.nav-btn-color .anticon{
+  color: #dbdbdb !important;
+}
+
+.nav-btn-color::after{
+    display: none;
+}

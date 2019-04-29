@@ -1,0 +1,38 @@
+{
+  "name": "mern-server",
+  "version": "8.9.2",
+  "description": "Mern Demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "client": "cd client && npm run start",
+    "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "go": "concurrently \"node server.js\" \"npm run client\"",
+    "setup": "npm install && cd client && npm install",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.18.3",
+    "brain.js": "^1.6.1",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "js-combinatorics": "^0.5.4",
+    "mongoose": "^5.4.20",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "react-dom": "^16.8.6",
+    "react-particles-js": "^2.5.1",
+    "react-social-icons": "^3.0.0",
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}

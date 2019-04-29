@@ -1,0 +1,15 @@
+#footer-nav nav h2{
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.125em;
+    line-height: 1.44444em;
+}
+
+#footer-nav nav a{
+    color: rgba(255,255,255,.4);
+    transition: color .3s;
+}
+
+#footer-nav nav ul{
+    line-height: 2.1rem;
+}
