@@ -1,13 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import SideBar from '../../Components/SideBar/SideBar';
 import MenuDir from './Components/MenuDir/Menu';
 import PastEvent from './Components/PastEvents/PastEvents';
 import UpcomingEvent from './Components/UpcomingEvent/UpcomingEvent';
 
+import { GetInitialData } from '../../Store/Actions/DataCenter/GetInitialData/GetInitialData';
+
 class DataCenter extends React.Component{
     state={
-        current:'past'
+        current: 'past'
+    }
+
+    componentDidMount(){
+        this.props.getIntData();
     }
 
     menuSelect = (e) => {
@@ -43,5 +50,9 @@ class DataCenter extends React.Component{
     } 
 };
 
-
-export default DataCenter
+const mapDispatchToProps = dispatch => {
+    return{ 
+        getIntData: ()=> dispatch( GetInitialData())
+    };
+};
+export default connect( null, mapDispatchToProps )( DataCenter );
