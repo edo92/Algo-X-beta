@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei');
+
+#sideBar{
+    height: 100vh;
+    border-right: 1px solid #D5DCE6;
+    background: linear-gradient(-1deg, #022954 6%, #2f4596 97%);
+    color:white;
+    
+}
+#sideBar ul{
+    list-style: none;
+}
+
+#sideBar-header{
+    background: #2e4492;
+    border-bottom: .5px solid #203fa2e0;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.07);
+}
+
+#logo-dash{
+    border-radius: 1.5px;
+    border: 1.5px solid rgb(76, 120, 191);
+    height: 1px;
+    width: 3rem;
+}
+#logo p{
+    font-size: 17px;
+    border-radius: 1px;
+    font-weight: bold;
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+
+.font-styleX{
+    font-size: 17px;
+    color:white;
+}
+
+.font-styleX small{
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+.selected{
+    border-left: 2px solid #1890ff;
+    color:#1890ff;
+}
+
+/*--- Side Bar Directory Links ----*/
+.sideBar-dir:hover{
+    border-left: 2px solid rgb(76, 120, 191);
+}
+#logo p:after {
+    content: 'Algo X';
+}
+
+@media screen and (min-width: 0px) and (max-width: 626px) {
+    .sideBar-dir small{
+        display: none;
+    }
+    .sideBar-dir a{
+        justify-content: center
+    }
+    .sideBar-dir i{
+        font-size: 21px;
+    }
+    #logo p:after {
+        content: 'X' !important;
+        font-size: 21px;
+    }
+    #logo{
+        text-align: center;
+        margin: 0 !important;
+    }
+}
+@media screen and (min-width: 627px) and (max-width: 735px) {
+    .sideBar-dir small{
+        font-size: 11px
+    }
+ 
+}
+
+/*-----------------------------*/
