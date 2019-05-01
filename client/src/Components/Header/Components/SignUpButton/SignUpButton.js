@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from 'antd';
-import './CSS/Content.css';
+import '../assets/CSS/Content.css';
 
 const RightBtns = props => {
 

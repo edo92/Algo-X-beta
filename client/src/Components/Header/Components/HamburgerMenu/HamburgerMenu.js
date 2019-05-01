@@ -1,6 +1,7 @@
 import React from "react";
 import { Drawer } from 'antd';
-import './CSS/HamburgerMenu.css';
+import '../assets/CSS/HamburgerMenu.css';
+import Directory from "./Components/Directory";
 
 let btn = React.createRef();
 class HamburgerMenu extends React.Component{ 
@@ -15,7 +16,7 @@ class HamburgerMenu extends React.Component{
     render(){
         let width = '35px';
         let height = '2px';
-        let color = '#dbdbdb';
+        let color = 'white';
 
         const menuStyle = {
             bar1:{
@@ -53,20 +54,8 @@ class HamburgerMenu extends React.Component{
                     visible={this.state.drawVisib}
                     className='text-center color-white'
                 >
-                    <div className='col-12 text-center p-0'>
-                        <div className=''>
-                            <a>Login</a>
-                        </div>
-                        <div className=''>
-                            <a>Register</a>
-                        </div>
-                        <div className=''>
-                            <a>How to use</a>
-                        </div>
-                        <div className=''>
-                            <a>About</a>
-                        </div>
-                    </div>
+                    <Directory/>
+                    
                 </Drawer>
             </div>
         )

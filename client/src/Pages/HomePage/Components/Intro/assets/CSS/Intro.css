@@ -1,0 +1,25 @@
+#intro-container{
+    height: 620px;
+}
+
+
+@media all and (min-width: 0px) and (max-width: 660px) {
+    #intro-textfild{
+        padding-top: 12rem;
+    }
+}
+
+@media all and (min-width: 661px) and (max-width: 1500px) {
+    #intro-textfild{
+        padding-left: 12rem;
+        padding-top: 12rem;
+    }
+}
+
+#intro-signup-btn{
+    border-radius: 17px;
+} 
+#intro-learn-btn{
+    border: 1px solid #e6e6e6c4;
+    border-radius:17px;
+}

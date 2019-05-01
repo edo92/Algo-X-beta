@@ -1,0 +1,6 @@
+#basicInfo-curve-container{
+    transform: skewY(-6deg);
+    background:-webkit-gradient(linear,left top,right top,from(#748df8),to(#6fa7f8));
+    height: 500px;
+    z-index: 2;
+}

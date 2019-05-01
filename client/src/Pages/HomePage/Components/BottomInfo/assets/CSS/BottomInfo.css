@@ -1,0 +1,37 @@
+
+#bottomInfo-container{
+    transform: skewY(-6deg);
+}
+@media all and (min-width: 768px) and (max-width: 1500px) {
+    #bottomInfo-container{
+        height: 700px;
+    }
+}
+@media all and (min-width: 0) and (max-width: 767px) {
+    #bottomInfo-container{
+        height: 1340px;
+    }
+}
+
+#bottomInfo-title h1{
+    transform: skewY(6deg);
+    z-index: 2;
+    padding: 2rem;
+}
+
+#info-box{
+    height: 391px;
+    position: absolute;
+    margin-top: 5rem;
+    z-index: 30;
+    transform: skewY(6deg);
+}
+
+#info-box ul{
+    justify-content: space-between;
+}
+
+#button-cover{
+    height: 120px;
+    margin-top: -10rem;
+}

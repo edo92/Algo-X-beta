@@ -10,18 +10,6 @@
     background: #f6f9fc;
 }
 
-
-#info-box{
-    height: 391px;
-    position: absolute;
-    margin-top: 5rem;
-    z-index: 30;
-    transform: skewY(6deg);
-}
-
-#info-box ul{
-    justify-content: space-between;
-}
 .info-card{
     border: 1px solid #d2d2d2;
     height: 300px;

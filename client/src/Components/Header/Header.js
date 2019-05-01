@@ -2,8 +2,8 @@ import React from 'react';
 
 import '../Header/CSS/Header.css';
 
-import SignUpButton from './Components/SignUpButton';
-import HamburgerMenu from './Components/HamburgerMenu';
+import SignUpButton from './Components/SignUpButton/SignUpButton';
+import HamburgerMenu from './Components/HamburgerMenu/HamburgerMenu';
 
 const Header = () => {
     return(
@@ -22,6 +22,6 @@ const Header = () => {
             </ul>
         </nav>
     )     
-}
+} 
 
 export default Header;
