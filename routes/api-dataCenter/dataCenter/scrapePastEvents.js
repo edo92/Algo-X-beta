@@ -9,8 +9,8 @@ module.exports = ( app, db ) => {
             let error = event.error;
             let success = await isOwnEvent( event.success );
 
-            if( success ) res.status( 200 ).json({ success });
-            else if ( error ) res.status( 200 ).json({ error });
+            if( event ) res.status( 200 ).json({ success });
+            if ( error ) res.status( 200 ).json({ error });
         } catch ( err ){
             throw err
         }
