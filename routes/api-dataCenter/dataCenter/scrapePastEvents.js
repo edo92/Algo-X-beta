@@ -6,11 +6,9 @@ module.exports = ( app, db ) => {
             let eventPage = req.params.page;
             let event = await scrapePastEvents( eventPage ); // scrape past event list
 
-            let error = event.error;
             let success = await isOwnEvent( event.success );
 
-            if( event ) res.status( 200 ).json({ success });
-            if ( error ) res.status( 200 ).json({ error });
+            res.status( 200 ).json({ success });
         } catch ( err ){
             throw err
         }
@@ -18,8 +16,7 @@ module.exports = ( app, db ) => {
 
 
     isOwnEvent = async ( data )=> {
-        if( data.error ) return data.error;
-
+        if( !data.length ) return data;
         try{
             let events = await db.Events.find({});
             let ownEvent = {};
