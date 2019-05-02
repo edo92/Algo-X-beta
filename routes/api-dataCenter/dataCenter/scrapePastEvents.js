@@ -6,9 +6,9 @@ module.exports = ( app, db ) => {
             let eventPage = req.params.page;
             let event = await scrapePastEvents( eventPage ); // scrape past event list
 
-            let success = await isOwnEvent( event.success );
+          //  let success = await isOwnEvent( event.success );
 
-            res.status( 200 ).json({ success });
+            res.status( 200 ).json({ success: event });
         } catch ( err ){
             throw err
         }
