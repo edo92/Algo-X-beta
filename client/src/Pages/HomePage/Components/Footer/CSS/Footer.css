@@ -14,3 +14,19 @@
     line-height: 2.1rem;
 }
 
+#footer{
+    background-color: #2A3039;
+    height: 350px;
+}
+
+.f-iconStyle{
+    font-size:1.8rem;
+    color: #ffff;
+}
+
+#footer-bottom{
+    background-color: rgba(0,0,0,.2);
+    height: 60px;
+    bottom:0;
+    position: absolute;
+}

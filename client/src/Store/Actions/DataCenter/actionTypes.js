@@ -1,0 +1,5 @@
+export const ERROR_OCCURED = 'ERROR_OCCURED';
+
+export const PAST_EVENTS = 'PAST_EVENTS';
+export const UPCOMING_EVENT = 'UPCOMING_EVENT';
+

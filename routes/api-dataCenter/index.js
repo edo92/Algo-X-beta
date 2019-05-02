@@ -1,5 +1,5 @@
 module.exports = ( app, db ) => {
-    require( './getIntData/getIntData' )( app, db )
+    require( './dataCenter/scrapePastEvents' )( app, db )
 
 };
   

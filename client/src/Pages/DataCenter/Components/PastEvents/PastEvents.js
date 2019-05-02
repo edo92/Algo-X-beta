@@ -1,11 +1,15 @@
 import React from 'react';
-import { Divider } from 'antd';
+import { Divider, Alert } from 'antd';
 import './assets/CSS/PastEvent.css';
 import PastEventsList from './Components/PastEventsList/PastEventsList';
 
-const PastEvent = () => {
+const PastEvent = props => {
     return(
         <div className='col-12 p-0'>
+            { props.errorOccured ? 
+            <div id='alert-cont' className='col-12 pt-3'>
+                <Alert message="Info Text" type="error" closeText="Close Now" />
+            </div> : null } 
             <div id='content-body' className='row col-12 p-2 m-0 pt-3 mt-3 justify-content-center'>
                 <div id='dc-container' className='col-12 col-md-5 p-0 mr-2 container-style'>
                     <div className='col-12 event-list-cont'>

@@ -49,10 +49,12 @@ class DataCenter extends React.Component{
         )
     } 
 };
-
+const check = state => {
+    console.log('state', state )
+}
 const mapDispatchToProps = dispatch => {
     return{ 
         getIntData: ()=> dispatch( GetInitialData())
     };
 };
-export default connect( null, mapDispatchToProps )( DataCenter );
+export default connect( check, mapDispatchToProps )( DataCenter );

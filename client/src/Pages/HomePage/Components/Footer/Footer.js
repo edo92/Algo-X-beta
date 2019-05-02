@@ -3,10 +3,10 @@ import React from 'react';
 import { Icon } from 'antd';
 import './CSS/Footer.css';
 
-const Footer = () =>{
+const Footer = () => {
     return(
         <div className='col-12 p-0'>
-            <div id='footer' className='col-12 p-0' style={{backgroundColor:'#2A3039', height: '350px'}}>
+            <div id='footer' className='col-12 p-0'>
                 <div id='footer-nav' className='row col-12 m-0 p-3'>
                     <div className='col-12 col-md-8 col-lg-9 p-0 m-0 pt-3'>
                         <div className='row col-12 p-0 m-0'>
@@ -56,16 +56,16 @@ const Footer = () =>{
                     </div>
                     <div id='social-container' className='col-12 col-md-4 col-lg-3 p-0 pt-5'>
                         <div className='row col-12 m-0 p-0'>
-                            <Icon className='col-1 mt-1 mx-2' style={{ fontSize:'1.8rem', color:'#ffff' }} type="facebook" />
-                            <Icon className='col-1 mt-1 mx-2' style={{ fontSize:'1.8rem', color:'#ffff' }} type="twitter" />
-                            <Icon className='col-1 mt-1 mx-2' style={{ fontSize:'1.8rem', color:'#ffff' }} type="instagram" />
-                            <Icon className='col-1 mt-1 mx-2' style={{ fontSize:'1.8rem', color:'#ffff' }} type="linkedin" />
-                            <Icon className='col-1 mt-1 mx-2' style={{ fontSize:'1.8rem', color:'#ffff' }} type="google-plus" />
+                            <Icon className='col-1 mt-1 mx-2 f-iconStyle' type="facebook" />
+                            <Icon className='col-1 mt-1 mx-2 f-iconStyle' type="twitter" />
+                            <Icon className='col-1 mt-1 mx-2 f-iconStyle' type="instagram" />
+                            <Icon className='col-1 mt-1 mx-2 f-iconStyle' type="linkedin" />
+                            <Icon className='col-1 mt-1 mx-2 f-iconStyle' type="google-plus" />
                         </div>
                     </div>
                 </div>
 
-                <div id='footer-bottom' className='col-12 p-0' style={{backgroundColor:'rgba(0,0,0,.2)', height: '60px', bottom:'0', position:'absolute'}}>
+                <div id='footer-bottom' className='col-12 p-0'>
                     <div className='col-12 p-0 m-0 pt-3'>
                         <div className='col-12'>
                             <p className='text-center text-white'>© 2019 Copyright AlgoX</p>
