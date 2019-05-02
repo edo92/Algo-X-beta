@@ -2,12 +2,13 @@ import axios from "axios";
 import { ERROR_OCCURED, PAST_EVENTS, UPCOMING_EVENT } from '../actionTypes';
 
 export const GetInitialData = () => {
-    return async dispatch => {
+    return async ( dispatch, getState ) => {
+        let page = getState().dataCenter.eventPage;
         try{
-            let pastEvent = await axios.get('/api/scrape/past/events/:page/');
+            let pastEvent = await axios.get(`/api/scrape/past/events/${page}/`);
             let pastSuccess = pastEvent.data.success;
             console.log('pastEvent',pastEvent)
-            if( pastSuccess ) dispatch( savePastEvent( pastSuccess ));
+             dispatch( savePastEvent( pastSuccess ));
 
             // let upcomEvent = await axios.get('/scrape/upcoming/event/');
             // let upcomeSuccess = upcomEvent.data.success;
