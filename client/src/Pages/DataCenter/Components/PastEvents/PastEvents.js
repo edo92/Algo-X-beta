@@ -4,6 +4,7 @@ import './assets/CSS/PastEvent.css';
 import PastEventsList from './Components/PastEventsList/PastEventsList';
 
 const PastEvent = props => {
+
     return(
         <div className='col-12 p-0'>
             { props.errorOccured ? 
@@ -17,7 +18,7 @@ const PastEvent = props => {
                             <p className='m-0 p-2 m-1 font-w-700'>Past Events</p>
                         </div>
                         <Divider className='mt-0 mb-3'/>
-                       
+                        <PastEventsList/>
                     </div>
                 </div>
                 <div id='dc-container' className='col-12 col-md-6 p-0 container-style'>

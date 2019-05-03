@@ -6,7 +6,7 @@ import MenuDir from './Components/MenuDir/Menu';
 import PastEvent from './Components/PastEvents/PastEvents';
 import UpcomingEvent from './Components/UpcomingEvent/UpcomingEvent';
 
-import { GetInitialData } from '../../Store/Actions/DataCenter/GetInitialData/GetInitialData';
+import { GetPastEvents } from '../../Store/Actions/DataCenter/GetPastEventsList/GetPastEvents';
 
 class DataCenter extends React.Component{
     state={
@@ -49,12 +49,9 @@ class DataCenter extends React.Component{
         )
     } 
 };
-const check = state => {
-    console.log('state', state )
-}
 const mapDispatchToProps = dispatch => {
     return{ 
-        getIntData: ()=> dispatch( GetInitialData())
+        getIntData: ()=> dispatch( GetPastEvents())
     };
 };
-export default connect( check, mapDispatchToProps )( DataCenter );
+export default connect( null, mapDispatchToProps )( DataCenter );

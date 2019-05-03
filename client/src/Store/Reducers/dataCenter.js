@@ -5,7 +5,7 @@ const initialState = {
     pastEventsList:[],
     resultInput:{},
     upcomeInput:{},
-    eventPage: 1,
+    eventPage: 0,
 };
 
 const dataCenter = ( state = initialState, action )=> {

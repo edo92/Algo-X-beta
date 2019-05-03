@@ -8,7 +8,7 @@ module.exports = ( app, db ) => {
 
           //  let success = await isOwnEvent( event.success );
 
-            res.status( 200 ).json({ success: event });
+            res.status( 200 ).json({ success: event.success });
         } catch ( err ){
             throw err
         }
