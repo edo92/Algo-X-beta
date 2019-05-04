@@ -1,6 +1,6 @@
 import { FIGHTER_LIST_PROGRESS, COLLECT_PAST_EVENT_FIGHTERS } from '../../actionTypes';
 import io from 'socket.io-client';
-let socket = io.connect( 'localhost:3001/' );
+let socket = io.connect( 'algo-x-beta.herokuapp.com' );
 
 export const emitCollectFighters = ( url ) => {
     if( url ) socket.emit('scrapeFeedBack', { someId:'someId', url });
