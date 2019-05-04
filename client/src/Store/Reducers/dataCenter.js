@@ -23,13 +23,13 @@ const dataCenter = ( state = initialState, action )=> {
             eventPage: action.eventPage,
             loadNext: action.loadNext
         }
-        
+ 
     case LOADING_MORE_EVENTS:
         return{
             ...state,
             loadNext: action.loadNext
         }
-
+        
     case UPCOMING_EVENT:
         return{
             ...state,

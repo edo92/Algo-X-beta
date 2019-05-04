@@ -10,7 +10,7 @@ import { GetPastEvents, GetEventFighters } from '../../../../../../Store/Actions
 import EventsList from './Components/EventsList';
 
 const PastEventsList = props => {
-    let { pastEvents, moreEvents, loadNext, getFighterList } = props;
+    let { pastEvents, getMoreEvents, loadNext, getFighterList } = props;
  
     return(
         <div className='col-12 p-0'>
@@ -28,7 +28,7 @@ const PastEventsList = props => {
             { pastEvents.length ?
                 <div className='col-12'>
                     <div className='row col-12 m-0 p-0 py-3 justify-content-center'>
-                        <a onClick={ moreEvents } className='text-center font-w-600 col-10'>Load More</a>
+                        <a onClick={ getMoreEvents } className='text-center font-w-600 col-10'>Load More</a>
                         <span className='position-absolute' style={{marginLeft:'3.3rem'}}>
                             { loadNext ? <Icon type="loading" spin={ true }/> : null }
                         </span>

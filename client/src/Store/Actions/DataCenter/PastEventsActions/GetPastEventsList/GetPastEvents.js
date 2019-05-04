@@ -14,7 +14,7 @@ export const GetPastEvents = () => {
             
             // Save past events
             let pastSuccess = pastEvents.data.success;
-            dispatch( savePastEventsList( pastSuccess, page ));
+            dispatch( pastEventsList( pastSuccess, page ));
 
         } catch( error ) {
             dispatch( errorOccured( CANT_GET_PAST_EVENTS ));
@@ -22,7 +22,7 @@ export const GetPastEvents = () => {
     }
 };
 
-const savePastEventsList = ( events, page ) => {
+const pastEventsList = ( events, page ) => {
     return{
         type: PAST_EVENTS,
         pastEventsList: events,
