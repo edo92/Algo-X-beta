@@ -10,9 +10,11 @@
 }
     
 #pastEvent-container{
-    max-height: 390px;
+    max-height: 490px;
     overflow-y: scroll;
-    overflow-x: hidden;
+}
+#content-body{
+    min-height: 500px;
 }
 
 @media screen and (min-width: 0px) and (max-width: 520px) {

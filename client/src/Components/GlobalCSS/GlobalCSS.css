@@ -21,8 +21,14 @@
 
 /* --- Overflow --- */
 .ov-scroll{
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .ov-hidden{
     overflow: hidden;
+}
+
+._logText{
+    overflow: hidden;
+    white-space: nowrap; /* Don't forget this one */
+    text-overflow: ellipsis;
 }

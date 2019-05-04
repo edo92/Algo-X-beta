@@ -20,18 +20,21 @@ module.exports = ( app, db ) => {
         try{
             let events = await db.Events.find({});
             let ownEvent = {};
-
-            for( let i in events ){
-                ownEvent[events[i].EventName] = true;
-            }
-            for( let i in data ){
-                if( ownEvent[data[i].name] ){
-                    data[i].ownEvent = true;
-                } else {
-                    data[i].ownEvent = false;
+            if( events ){
+                for( let i in events ){
+                    ownEvent[events[i].EventName] = true;
                 }
+                for( let i in data ){
+                    if( ownEvent[data[i].name] ){
+                        data[i].ownEvent = true;
+                    } else {
+                        data[i].ownEvent = false;
+                    }
+                }
+                return data;
+            }else {
+                return data;
             }
-            return data;
         } catch( error ){ return { error: "Can't Get Events" }};
     }
 };

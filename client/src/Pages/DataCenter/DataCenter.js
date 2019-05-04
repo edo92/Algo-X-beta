@@ -6,7 +6,7 @@ import MenuDir from './Components/MenuDir/Menu';
 import PastEvent from './Components/PastEvents/PastEvents';
 import UpcomingEvent from './Components/UpcomingEvent/UpcomingEvent';
 
-import { GetPastEvents } from '../../Store/Actions/DataCenter/GetPastEventsList/GetPastEvents';
+import { GetPastEvents } from '../../Store/Actions/DataCenter/PastEventsActions/index';
 
 class DataCenter extends React.Component{
     state={
