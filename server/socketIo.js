@@ -1,6 +1,10 @@
 const collectFighterList = require('../routes/api-data-center/past-event-routes/collect-event-fighters/collectEventFighters');
 
 module.exports = io => {
+    // io.set('authorization',{
+    //     secret:'hellloo',
+    //     handshake: true
+    // })
     io.sockets.on( 'connection', socket => {
         socket.on('scrapeFeedBack', client => { // Room
             socket.join( client.someId );
