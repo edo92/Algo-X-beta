@@ -7,6 +7,8 @@ import PastEvent from './Components/PastEvents/PastEvents';
 import UpcomingEvent from './Components/UpcomingEvent/UpcomingEvent';
 
 import { GetPastEvents } from '../../Store/Actions/DataCenter/PastEventsActions/index';
+import { listenCollectProgress } from '../../Store/Actions/DataCenter/PastEventsActions/socketActions/index';
+
 
 class DataCenter extends React.Component{
     state={
@@ -15,6 +17,7 @@ class DataCenter extends React.Component{
 
     componentDidMount(){
         this.props.getIntData();
+        this.props.listenPastEventProgress()
     }
 
     menuSelect = (e) => {
@@ -34,14 +37,11 @@ class DataCenter extends React.Component{
                             />
                         </div>
                         <div className='col-12 p-0'>
-                            <div className='col-12 p-0'>
-                                { 
-                                    this.state.current === 'past' ?
-                                    <PastEvent/>
-                                    :
-                                    <UpcomingEvent/>
-                                }
-                            </div>
+                            { this.state.current === 'past' ?
+                                <PastEvent/>
+                                :
+                                <UpcomingEvent/>
+                            }       
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,8 @@ class DataCenter extends React.Component{
 };
 const mapDispatchToProps = dispatch => {
     return{ 
-        getIntData: ()=> dispatch( GetPastEvents())
+        getIntData: ()=> dispatch( GetPastEvents()),
+        listenPastEventProgress: () => dispatch( listenCollectProgress )
     };
 };
 export default connect( null, mapDispatchToProps )( DataCenter );

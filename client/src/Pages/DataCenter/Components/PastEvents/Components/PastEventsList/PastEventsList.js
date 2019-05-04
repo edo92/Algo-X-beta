@@ -6,16 +6,19 @@ import './assets/PastEventList.css';
 
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
 
-import { GetPastEvents } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
+import { GetPastEvents, GetEventFighters } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
 import EventsList from './Components/EventsList';
 
 const PastEventsList = props => {
-    let { pastEvents, moreEvents, loadNext } = props;
+    let { pastEvents, moreEvents, loadNext, getFighterList } = props;
  
     return(
         <div className='col-12 p-0'>
             <div className='col-12 p-0'>
-                <EventsList pastEvents={ pastEvents }/>
+                <EventsList 
+                    pastEvents={ pastEvents }
+                    getFighterList={ getFighterList }
+                />
                 { !pastEvents.length ? 
                     <div className='col-12 text-center'>
                         <LoadingIcon size={'large'} style={{marginTop:'65px'}}/>
@@ -44,7 +47,8 @@ const mapStateToprops = state => {
 }
 const mapDispatchToprops = dispatch => {
     return{ 
-        moreEvents: () => dispatch( GetPastEvents())
+        getMoreEvents: () => dispatch( GetPastEvents()),
+        getFighterList: (url,info) => dispatch( GetEventFighters(url,info))
     };
 };
 export default connect( mapStateToprops, mapDispatchToprops )( PastEventsList );

@@ -1,2 +1,2 @@
 export { GetPastEvents } from './GetPastEventsList/GetPastEvents';
-export { GetEventFighters } from './GetEventFighters/GetEventFighters';
+export { GetEventFighters } from './GetPastEventFighters/GetEventFighters';

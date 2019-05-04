@@ -1,4 +1,4 @@
-const scrapePastEvents = require('../../../scrapeData/pastEvents/scrapeEvents/scrapeEvents');
+const scrapePastEvents = require('../../../../scrapeData/pastEvents/scrapeEvents/scrapeEvents');
 
 module.exports = ( app, db ) => {
     app.get('/api/scrape/past/events/:page/', async ( req, res ) => {

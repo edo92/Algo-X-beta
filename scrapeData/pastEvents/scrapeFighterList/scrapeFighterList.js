@@ -10,6 +10,7 @@ module.exports = async ( client, feedBack ) => {
         let stats = await scrapeContestStats( links, feedBack );
 
         let fullList = countScore( stats, feedBack );
+        feedBack('hello')
 
         return fullList;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from 'antd';
 
+
 class EventsList extends React.Component {
     state={ }
 
@@ -17,7 +18,7 @@ class EventsList extends React.Component {
     
     selectEventHandler( url, event, eventInfo ){
         this.selectedEvent( event );
-        //this.props.eventFighters( url, eventInfo );
+        this.props.getFighterList( url, eventInfo );
     }
 
     render(){
