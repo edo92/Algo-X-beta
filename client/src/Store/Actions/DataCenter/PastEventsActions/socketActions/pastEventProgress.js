@@ -1,6 +1,7 @@
 import { FIGHTER_LIST_PROGRESS, COLLECT_PAST_EVENT_FIGHTERS } from '../../actionTypes';
 import io from 'socket.io-client';
-let socket = io.connect( 'lalgo-x-beta.herokuapp.com' );
+let URI = window.location.href;
+let socket = io.connect( URI );
 
 export const emitCollectFighters = ( url, dispatch ) => {
     if( url ) {

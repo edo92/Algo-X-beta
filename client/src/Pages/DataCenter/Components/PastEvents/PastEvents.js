@@ -12,6 +12,25 @@ const PastEvent = props => {
             <div id='alert-cont' className='col-12 pt-3'>
                 <Alert message="Info Text" type="error" closeText="Close Now" />
             </div> : null } 
+            <div className='row col-12 m-0 p-1 justify-content-center'>
+                <ul id='stats-dash' className='row col-12 p-0 m-0 list-none' style={{height:'150px'}}>
+                    <li className='col-4 p-0'>
+                        <div className='col-12 p-1 container-style'>
+                                
+                        </div>
+                    </li>
+                    <li className='col-4 p-0'>
+                        <div className='col-12 p-1 container-style'>
+                            
+                        </div>
+                    </li>
+                    <li className='col-4 p-0'>
+                        <div className='col-12 p-1 container-style'>
+                        
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <div id='content-body' className='row col-12 p-2 m-0 pt-3 mt-3 justify-content-center'>
                 <div className='col-12 col-md-5 p-0 mr-2 container-style'>
                     <div className='col-12'>
@@ -30,11 +49,6 @@ const PastEvent = props => {
                         <Divider className='mt-0 mb-3'/>
                         <EventFightersList/>
                     </div>
-                </div>
-            </div>
-            <div className='row col-12 m-0 p-1 justify-content-center'>
-                <div className='col-11 p-0 container-style' style={{height:'220px'}}>
-                    
                 </div>
             </div>
         </div>             
