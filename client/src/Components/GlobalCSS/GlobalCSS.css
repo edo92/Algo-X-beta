@@ -1,3 +1,4 @@
+/* --- Basic decor --- */
 .list-none{
     list-style: none;
 }
@@ -27,8 +28,38 @@
     overflow: hidden;
 }
 
-._logText{
+._logText{ /* change to longText <-> add n */
     overflow: hidden;
-    white-space: nowrap; /* Don't forget this one */
+    white-space: nowrap; 
     text-overflow: ellipsis;
+}
+
+/* --- Dynamic Visibility --- */
+    /* ---> VISIBLE <--- */
+.visible-sm{
+    visibility: hidden;
+}
+@media screen and (min-width: 0px) and (max-width: 576px) {
+    .visible-sm{
+        visibility: visible !important;
+    }
+}
+
+.visible-md{
+    visibility: hidden;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    .visible-md{
+        visibility: visible;
+    }
+}
+/* ---> NOT Visible <--- */
+.hidden-md{
+    visibility: visible;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    .hidden-md{
+        visibility: hidden;
+        display: none;
+    }
 }

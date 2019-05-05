@@ -1,0 +1,11 @@
+#past-stats-container{
+    height: 150px;
+}
+
+#past-stats-container .container-style{
+    height: 135px;
+}
+
+.vertic-div{
+    border-right: 1px solid gray;
+}

@@ -1,3 +1,4 @@
-#stats-dash .container-style{
-    height: 150px;
+
+#content-body .container-style{
+   min-height: 530px;
 }

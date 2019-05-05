@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei');
 
+#sidebar-container{
+}
 #sideBar{
-    height: 100vh;
+    min-height: 800px;
     border-right: 1px solid #D5DCE6;
     background: linear-gradient(-1deg, #022954 6%, #2f4596 97%);
     color:white;
     
 }
+ 
 #sideBar ul{
     list-style: none;
 }

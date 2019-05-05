@@ -5,9 +5,9 @@ import { Icon } from 'antd';
 import './assets/PastEventList.css';
 
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
+import EventsList from './Components/EventsList';
 
 import { GetPastEvents, GetEventFighters } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
-import EventsList from './Components/EventsList';
 
 const PastEventsList = props => {
     let { pastEvents, getMoreEvents, loadNext, getFighterList } = props;

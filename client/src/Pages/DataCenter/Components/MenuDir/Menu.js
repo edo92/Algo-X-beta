@@ -3,7 +3,7 @@ import { Icon, Menu } from 'antd';
 
 const MenuDir = props => {
     return(
-        <div className='col-12 p-0'>
+        <div className='col-12 p-0 py-1'>
             <Menu
                 onClick={ props.menuSelect }
                 mode="horizontal"
