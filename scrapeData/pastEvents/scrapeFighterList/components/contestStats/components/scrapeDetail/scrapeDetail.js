@@ -37,6 +37,5 @@ module.exports = ( $, result, feedBack ) => {
         result = constractDetailObj( obj, feedBack );
     });
     
-    feedBack({ progress: 5 });
     return result;
 };

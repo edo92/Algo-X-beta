@@ -10,7 +10,7 @@
 }
     
 #pastEvent-container{
-    max-height: 490px;
+    max-height: 430px;
     overflow-y: scroll;
 }
 #content-body{

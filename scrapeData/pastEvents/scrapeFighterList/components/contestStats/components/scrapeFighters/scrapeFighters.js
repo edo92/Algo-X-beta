@@ -1,4 +1,5 @@
 const constructScoreObj = require('./constractScoreObj');
+const messTypes = require('../../../../../../messageTypes');
 
 module.exports = async ( $, feedBack  ) => {
     let result={};
@@ -17,6 +18,8 @@ module.exports = async ( $, feedBack  ) => {
         resultArr.push( result[i] );
     };
 
-    feedBack({ progress: 1 });
+    let { collect_fighters } = messTypes.messageTypes;
+    feedBack({ progress: 1, loadMessage: collect_fighters });
+    
     return resultArr;
 };

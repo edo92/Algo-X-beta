@@ -9,7 +9,6 @@ module.exports = async ( io, client ) => {
     }
 
     function feedBack( data ){
-        console.log('id--xxx', id)
         io.sockets.in( id ).emit( 'scrapeFeedBack', data );
     };
 }; 

@@ -13,7 +13,7 @@ const PastEventsList = props => {
     let { pastEvents, getMoreEvents, loadNext, getFighterList } = props;
  
     return(
-        <div className='col-12 p-0'>
+        <div id='pastEvent-container' className='col-12 p-0'>
             <div className='col-12 p-0'>
                 <EventsList 
                     pastEvents={ pastEvents }

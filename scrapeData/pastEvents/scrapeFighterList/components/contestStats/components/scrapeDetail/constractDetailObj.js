@@ -1,3 +1,5 @@
+const messTypes = require('../../../../../../messageTypes');
+
 module.exports = ( obj, feedBack ) => {
     let { result, getValue, weightClass, method, round, finishMethod } = obj;
 
@@ -19,7 +21,8 @@ module.exports = ( obj, feedBack ) => {
     fighter.finishMethod = finishMethod();
     opponent.finishMethod = finishMethod();
 
-    feedBack({ progress: 1 });
+    let { collect_fighters } = messTypes.messageTypes;
+    feedBack({ progress: 1, loadMessage: collect_fighters });
     
     return result 
 }; 

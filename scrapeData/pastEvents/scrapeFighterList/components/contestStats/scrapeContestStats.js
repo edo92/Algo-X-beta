@@ -1,6 +1,8 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
+const messTypes = require('../../../../messageTypes');
+
 const scrapeFighters = require('./components/scrapeFighters/scrapeFighters');
 const scrapeDeatels = require('./components/scrapeDetail/scrapeDetail');
 
@@ -17,7 +19,8 @@ module.exports = async ( link, feedBack )=> {
     
             result = await scrapeDeatels( $, result, feedBack );
 
-            feedBack({ progress: 1 });
+            let { collect_fighters } = messTypes.messageTypes;
+            feedBack({ progress: 1, loadMessage: collect_fighters });
 
         } catch( err ){ return { error: 'Collecting Fighter Stats Was Not Successful'}};
     };

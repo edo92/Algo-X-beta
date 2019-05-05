@@ -3,8 +3,11 @@ import { Spin } from 'antd';
 
 const LoadingIcon = props => {
     return(
-        <Spin style={props.style? {...props.style} : null } size={props.size ? props.size : 'small'} tip="Loading...">
-            
+        <Spin 
+            style={props.style ? {...props.style} : null } 
+            size={'large'} 
+            tip={ props.loadMessage ? props.loadMessage : 'Loading...' }
+        >
         </Spin>
     )
 };

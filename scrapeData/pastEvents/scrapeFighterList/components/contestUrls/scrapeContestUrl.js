@@ -1,5 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const messTypes = require('../../../../messageTypes');
 
 module.exports = async ( url, feedBack )=> {
     try{
@@ -18,10 +19,10 @@ const scrapeUrl = ( $, feedBack )=> {
 
     $(`tr.b-fight-details__table-row`).each(( i, elem )=> {
         let contestUrl = $(elem).find('td').find('a').attr('href');
-
         if( i > 0 ) links.push( contestUrl.replace(/\s\s+/g, ' ').trim() );
         
-        feedBack({ progress: 1 });
+        let { initializing } = messTypes.messageTypes;
+        feedBack({ progress: 1 , loadMessage: initializing });
     });
 
     return links

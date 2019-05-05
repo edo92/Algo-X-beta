@@ -1,3 +1,5 @@
+const messTypes = require('../../../../messageTypes');
+
 module.exports = ( arr, feedBack ) => {
 
     let listArr = [];
@@ -31,8 +33,9 @@ module.exports = ( arr, feedBack ) => {
         }
         arr[name].points.total = total;
         listArr.push( arr[name] );
-        feedBack({ progress: 1 });
 
+        let { collect_score } = messTypes.messageTypes;
+        feedBack({ progress: 1, loadMessage: collect_score });
     };
     
     

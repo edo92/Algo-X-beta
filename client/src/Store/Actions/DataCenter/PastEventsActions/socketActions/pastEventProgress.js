@@ -15,11 +15,11 @@ export const emitCollectFighters = ( url, dispatch ) => {
 
 export const listenCollectProgress = dispatch => {
     socket.on('scrapeFeedBack', data => {
-        if( data.progress ) dispatch( progress( data.progress ));
+        if( data.progress ) dispatch( progress( data.progress, data.loadMessage ));
         if( data.success ) dispatch( fighterList( data.success ));
     })
 };
- 
+  
 const fighterList = list => {
     return{
         type: COLLECT_PAST_EVENT_FIGHTERS,
@@ -28,10 +28,11 @@ const fighterList = list => {
     }
 }
 
-const progress = feedBack => {
+const progress = ( feedBack, loadMessage ) => {
     return{
         type: FIGHTER_LIST_PROGRESS,
-        feedBack: feedBack,
+        feedBack,
+        loadMessage,
     }
 };
 
