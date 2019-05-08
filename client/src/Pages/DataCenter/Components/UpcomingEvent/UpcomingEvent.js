@@ -8,4 +8,4 @@ const UpcomingEvent = () => {
     )
 }
 
-export default UpcomingEvent;
+export default React.memo( UpcomingEvent );

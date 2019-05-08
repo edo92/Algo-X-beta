@@ -26,7 +26,7 @@ class DataCenter extends React.Component{
 
     render(){
         return(
-            <div className='col-12 p-0'>
+            <div className='col-12 p-0 ov-hidden'>
                 <div className='row col-12 p-0 m-0'>
                     <SideBar/>
                     <div className='col-10 p-0 bg-light'>

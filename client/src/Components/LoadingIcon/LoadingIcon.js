@@ -12,4 +12,4 @@ const LoadingIcon = props => {
     )
 };
 
-export default LoadingIcon;
+export default React.memo( LoadingIcon );

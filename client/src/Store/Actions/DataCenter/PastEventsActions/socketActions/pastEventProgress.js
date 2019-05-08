@@ -1,6 +1,5 @@
 import { FIGHTER_LIST_PROGRESS, COLLECT_PAST_EVENT_FIGHTERS } from '../../actionTypes';
 import io from 'socket.io-client';
-let URI = window.location.href;
 let socket = io.connect( 'algo-x-beta.herokuapp.com' );
 
 export const emitCollectFighters = ( url, dispatch ) => {
@@ -28,7 +27,6 @@ const fighterList = list => {
         loadingList: false
     }
 }
-
 const progress = ( feedBack, loadMessage ) => {
     return{
         type: FIGHTER_LIST_PROGRESS,

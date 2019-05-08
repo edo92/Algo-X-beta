@@ -6,18 +6,20 @@ const MenuDir = props => {
         <div className='col-12 p-0 py-1'>
             <Menu
                 onClick={ props.menuSelect }
-                mode="horizontal"
+                mode='horizontal'
                 selectedKeys={ [props.selected] }
             >
-                <Menu.Item key="past">
-                    <Icon type="mail" />Past Events
+                <Menu.Item key='past'>
+                    <Icon type='caret-left' />
+                    <span className='font-w-600'>Past Events</span>
                 </Menu.Item>
-                <Menu.Item key="upcoming">
-                    <Icon type="appstore" />Upcoming Event
+                <Menu.Item key='upcoming'>
+                    <Icon type='caret-right' />
+                    <span className='font-w-600'>Upcoming Event</span>
                 </Menu.Item>
             </Menu>
         </div>                         
     )      
 }
 
-export default MenuDir;
+export default React.memo( MenuDir );

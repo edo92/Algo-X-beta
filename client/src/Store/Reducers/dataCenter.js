@@ -1,6 +1,7 @@
 import { 
     PAST_EVENTS, UPCOMING_EVENT, LOADING_MORE_EVENTS, ERROR_OCCURED,
-    COLLECT_PAST_EVENT_FIGHTERS, FIGHTER_LIST_PROGRESS, SELECTED_EVENT
+    COLLECT_PAST_EVENT_FIGHTERS, FIGHTER_LIST_PROGRESS, SELECTED_EVENT,
+    HANDLE_INPUT_PAST_EVENT,
 } from '../Actions/DataCenter/actionTypes';
 
 const initialState = {
@@ -24,6 +25,26 @@ const dataCenter = ( state = initialState, action )=> {
             loadNext: action.loadNext
         }
  
+    case HANDLE_INPUT_PAST_EVENT:
+        let { name, placeholder, value } = action.input;
+        return{
+            ...state,
+            resultInput:{
+                ...state.resultInput,
+                [name]: {
+                    ...state.resultInput[name],
+                    [placeholder]: value,
+                },
+            }
+        }
+
+    case COLLECT_PAST_EVENT_FIGHTERS:
+        return{
+            ...state,
+            fighterList: action.fighterList,
+            loadingList: action.loadingList
+        }
+
     case LOADING_MORE_EVENTS:
         return{
             ...state,
@@ -38,19 +59,14 @@ const dataCenter = ( state = initialState, action )=> {
         }
 
     case SELECTED_EVENT:
+    console.log('reducer', action )
         return{
             ...state,
             loadingList: action.loadingList,
-            selectedEvent: action.eventName,
+            selectedEvent: action.selectedEvent,
         }
 
-    case COLLECT_PAST_EVENT_FIGHTERS:
-        return{
-            ...state,
-            fighterList: action.fighterList,
-            loadingList: action.loadingList
-        }
-
+    
     case FIGHTER_LIST_PROGRESS:
         return{
             ...state,

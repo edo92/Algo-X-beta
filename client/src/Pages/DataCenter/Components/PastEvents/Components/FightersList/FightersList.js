@@ -7,13 +7,18 @@ import './assets/CSS/FightersList.css';
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
 import MapFighters from './Components/MapFighters';
 
+import { HandleInputs, SubmitEvent } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
+
 const EventFightersList = props => {
-    let { fighterList, loadingList, handleInputs, submit, progress, eventInfo, loadMessage } = props;
+    let {
+        fighterList, loadingList, handleInputs,
+        progress, selectedEvent, loadMessage, saveEvent
+    } = props;
     let onLoadStyle = loadingList ? { opacity:0.4 } : { opacity: 1 };
 
     return(
         <div className='row col-12 p-0 m-0'>
-            <div style={ onLoadStyle } id='fightersList' className='row col-12 m-0 p-0'>
+            <div style={ onLoadStyle } id='fightersList' className='row col-12 m-0'>
                 <MapFighters 
                     fighterList={ fighterList }
                     handleInputs={ handleInputs }
@@ -21,27 +26,25 @@ const EventFightersList = props => {
                 />
             </div>
             <div className='col-12 p-0 pt-2 text-center position-absolute'>
-                <ul className='col-12 p-0 list-none'>
-                     { loadingList ? 
-                        <ul className='col-12 p-0 list-none'>
-                            <li className='col-12'>
-                                <LoadingIcon loadMessage={ loadMessage } style={{marginTop:'65px'}}/> 
-                            </li>
-                            <li className='col-12 mt-3'>
-                                <Progress
-                                    percent={ progress }
-                                    status="active"
-                                />
-                            </li>
-                        </ul>
-                    : null }
-                </ul>
+                { loadingList ? 
+                    <ul className='col-12 p-0 list-none'>
+                        <li className='col-12'>
+                            <LoadingIcon loadMessage={ loadMessage } style={{marginTop:'65px'}}/> 
+                        </li>
+                        <li className='col-12 mt-3'>
+                            <Progress
+                                percent={ progress }
+                                status='active'
+                            />
+                        </li>
+                    </ul>
+                : null }       
             </div>
-            <div className='col-12 p-0'>
+            <div className='col-12'>
                 <ul className='col-12 p-0 list-none'>
                     { fighterList && !loadingList ? 
                         <li className='pt-3'>
-                            <a onClick={()=> submit( eventInfo ) } id='list-submitBtn' className='col-12 btn btn-light'>Submit</a>
+                            <a onClick={ ()=> saveEvent( selectedEvent ) } id='list-submitBtn' className='col-12 btn btn-light'>Submit</a>
                         </li>
                     : null }
                 </ul>
@@ -56,12 +59,14 @@ const mapStateToprops = state => {
         fighterList: state.dataCenter.fighterList,
         loadingList: state.dataCenter.loadingList,
         progress: state.dataCenter.progress,
-        loadMessage: state.dataCenter.loadMessage
+        loadMessage: state.dataCenter.loadMessage,
+        selectedEvent: state.dataCenter.selectedEvent
     }
 }
 const mapDispatchToprops = dispatch => {
     return{ 
-
+        handleInputs: (e) => dispatch( HandleInputs(e)),
+        saveEvent: (selct) => dispatch( SubmitEvent(selct))
     };
 };
 export default connect( mapStateToprops, mapDispatchToprops )( EventFightersList );

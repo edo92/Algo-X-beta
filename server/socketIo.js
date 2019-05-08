@@ -1,4 +1,5 @@
 const collectFighterList = require('../routes/api-data-center/past-event-routes/collect-event-fighters/collectEventFighters');
+const savePastEvent = require('../routes/api-data-center/past-event-routes/save-past-event/savePastEvent');
 
 module.exports = io => {
     // io.set('authorization',{
@@ -12,11 +13,13 @@ module.exports = io => {
         });
 
         socket.on('saveEvent', client => { // Room
-         
+            console.log('check socket' )
+            socket.join( client.someId );
+            savePastEvent( io, client );
         });
 
         socket.on( 'disconnect', data => { // Disconnect socket 
-            socket.disconnect();
+            socket.disconnect(); 
         });
     }); 
 };

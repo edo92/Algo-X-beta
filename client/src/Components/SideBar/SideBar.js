@@ -4,9 +4,6 @@ import { Icon } from 'antd';
 import './assets/CSS/SideBar.css';
 
 const SideBar = () => {
-    const path = window.location.pathname.split('/')[1];
-    const sessionId = window.location.pathname.split('/')[1];
-    
     return(
         <div id='sidebar-container' className='col-2 p-0 sideBar'>
             <div id='sideBar' className='col-12 p-0'>
@@ -59,4 +56,4 @@ const SideBar = () => {
     )
 };
 
-export default SideBar;
+export default React.memo( SideBar );

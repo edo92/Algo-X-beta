@@ -5,7 +5,7 @@ import { Icon } from 'antd';
 class EventsList extends React.Component {
     state={ }
 
-    selectedEvent( event ){
+    selectedEvent = ( event ) => {
         let selectEl = Object.keys(this.state)[0];
         if( selectEl ) delete this.state[selectEl];
         this.setState({
@@ -16,7 +16,7 @@ class EventsList extends React.Component {
         })
     };
     
-    selectEventHandler( url, event, eventInfo ){
+    selectEventHandler = ( url, event, eventInfo ) => {
         this.selectedEvent( event );
         this.props.getFighterList( url, eventInfo );
     }
@@ -39,7 +39,7 @@ class EventsList extends React.Component {
                             id='event-col'
                             key={mainEvent+i}
                             onClick={ ()=> this.selectEventHandler(url, mainEvent, eventInfo) } 
-                            style={ state[mainEvent] } key={mainEvent+i} 
+                            style={ state[mainEvent] } 
                         >
                             <li className='col-1 p-1'>
                                 { event.ownEvent ? 
@@ -62,4 +62,4 @@ class EventsList extends React.Component {
     }                        
 }
 
-export default EventsList;
+export default React.memo( EventsList );

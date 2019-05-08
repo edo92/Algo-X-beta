@@ -10,14 +10,18 @@ import EventsList from './Components/EventsList';
 import { GetPastEvents, GetEventFighters } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
 
 const PastEventsList = props => {
-    let { pastEvents, getMoreEvents, loadNext, getFighterList } = props;
+    let {
+        pastEvents, getMoreEvents, loadNext,
+        getFighterList, selectedEvent
+    } = props;
  
     return(
-        <div id='pastEvent-container' className='col-12 p-0'>
+        <div id='pastEvent-container' className='col-12'>
             <div className='col-12 p-0'>
                 <EventsList 
                     pastEvents={ pastEvents }
                     getFighterList={ getFighterList }
+                    selectedEvent={ selectedEvent }
                 />
                 { !pastEvents.length ? 
                     <div className='col-12 text-center'>
@@ -42,7 +46,8 @@ const PastEventsList = props => {
 const mapStateToprops = state => {
     return{
         pastEvents: state.dataCenter.pastEventsList,
-        loadNext: state.dataCenter.loadNext
+        loadNext: state.dataCenter.loadNext,
+        selectedEvent: state.dataCenter.selectedEvent
     }
 }
 const mapDispatchToprops = dispatch => {
@@ -51,4 +56,4 @@ const mapDispatchToprops = dispatch => {
         getFighterList: (url,info) => dispatch( GetEventFighters(url,info))
     };
 };
-export default connect( mapStateToprops, mapDispatchToprops )( PastEventsList );
+export default connect( mapStateToprops, mapDispatchToprops )( React.memo(PastEventsList) );
