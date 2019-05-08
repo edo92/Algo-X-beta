@@ -8,8 +8,8 @@ module.exports = async ( io, event ) => {
 
     if( eventInfo ){
         try{
-            let fighterStats = await collectFighterStats( eventInfo.url, feedBack );// scrape fighter stats
-            let saveStats = await saveFighterStats( fighterStats );// save scraped fighter's stats (diff doc)
+            let fighterStats = await collectFighterStats( eventInfo.url, feedBack ); // scrape fighter stats
+            let saveStats = await saveFighterStats( fighterStats ); // save scraped fighter's stats (diff doc)
             let savedData = await savePastEvent( event ); //save event fighters and stats
             
         } catch( err ) { throw err };
