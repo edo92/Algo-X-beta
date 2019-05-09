@@ -1,9 +1,9 @@
 import { 
-    PAST_EVENTS, UPCOMING_EVENT, LOADING_MORE_EVENTS, ERROR_OCCURED,
-    COLLECT_PAST_EVENT_FIGHTERS, FIGHTER_LIST_PROGRESS, SELECTED_EVENT,
-    HANDLE_INPUT_PAST_EVENT,
+    PAST_EVENTS, SUBMIT_EVENT, NEXT_LOAD, ERROR_OCCURED,
+    EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT,
+    HANDLE_INPUT_PAST_EVENT, EVENT_SAVED
 } from '../Actions/DataCenter/actionTypes';
-
+ 
 const initialState = {
     pastEventsList:[],
     resultInput:{},
@@ -16,20 +16,55 @@ const dataCenter = ( state = initialState, action )=> {
     switch( action.type ){
     
     case PAST_EVENTS:
-        return{
+        return {
             ...state,
             pastEventsList: [
                 ...state.pastEventsList, ...action.pastEventsList
             ],
             eventPage: action.eventPage,
-            loadNext: action.loadNext
+            loadNext: false
         }
- 
-    case HANDLE_INPUT_PAST_EVENT:
-        let { name, placeholder, value } = action.input;
+
+    case NEXT_LOAD:
+        return {
+            ...state,
+            loadNext: action.loadNext,
+        }
+
+    case SELECT_EVENT:
+        return {
+            ...state,
+            loadingStatus: action.loadingStatus,
+            selectedEvent: action.selectedEvent,
+        }
+
+    case EVENT_FIGHTERS:
+        return {
+            ...state,
+            fighterList: action.fighterList,
+            loadingStatus: false,
+            progress: 0
+        }     
+
+    case EVENT_SAVED:
+        return {
+            ...state,
+            loadingStatus: false,
+        }
+
+    case PROGRESS_LOADING:
         return{
             ...state,
-            resultInput:{
+            progress: state.progress + action.progress,
+            loadMessage: state.loadMessage !== action.loadMessage ? action.loadMessage : '',
+            loadingStatus: action.loadingStatus
+        }
+
+    case HANDLE_INPUT_PAST_EVENT:
+        let { name, placeholder, value } = action.input;
+        return {
+            ...state,
+            resultInput: {
                 ...state.resultInput,
                 [name]: {
                     ...state.resultInput[name],
@@ -38,42 +73,6 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }
 
-    case COLLECT_PAST_EVENT_FIGHTERS:
-        return{
-            ...state,
-            fighterList: action.fighterList,
-            loadingList: action.loadingList
-        }
-
-    case LOADING_MORE_EVENTS:
-        return{
-            ...state,
-            loadNext: action.loadNext
-        }
-         
-    case UPCOMING_EVENT:
-        return{
-            ...state,
-            fighterList: action.fighterList,
-            loadingList: action.loadingList,
-        }
-
-    case SELECTED_EVENT:
-    console.log('reducer', action )
-        return{
-            ...state,
-            loadingList: action.loadingList,
-            selectedEvent: action.selectedEvent,
-        }
-
-    
-    case FIGHTER_LIST_PROGRESS:
-        return{
-            ...state,
-            progress: state.progress + action.feedBack,
-            loadMessage: state.loadMessage !== action.loadMessage ? action.loadMessage : ''
-        }
-        
     case ERROR_OCCURED:
         return{
             ...state,
@@ -81,7 +80,8 @@ const dataCenter = ( state = initialState, action )=> {
         }
 
     
-        default: return state;
+        default:
+            return state;
     
     };
 };

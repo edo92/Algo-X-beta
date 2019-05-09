@@ -1,5 +1,7 @@
-export { GetPastEvents } from './GetPastEventsList/GetPastEvents';
-export { GetEventFighters } from './GetPastEventFighters/GetEventFighters';
+export { getPastEvents } from './GetPastEventsList/GetPastEvents';
+export { getEventFighters } from './GetPastEventFighters/GetEventFighters';
 
-export { HandleInputs } from './HandleInputs/HandleInputs';
-export { SubmitEvent } from './SubmitEvent/SubmitEvent';
+export { handleInputs } from './HandleInputs/HandleInputs';
+export { submitEvent } from './SubmitEvent/SubmitEvent';
+
+export { initialData } from './GetIntData/GetIntData';

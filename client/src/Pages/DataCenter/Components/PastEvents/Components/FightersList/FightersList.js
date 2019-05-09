@@ -7,26 +7,25 @@ import './assets/CSS/FightersList.css';
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
 import MapFighters from './Components/MapFighters';
 
-import { HandleInputs, SubmitEvent } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
+import { handleInputs, submitEvent } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
 
 const EventFightersList = props => {
     let {
-        fighterList, loadingList, handleInputs,
+        fighterList, loadingStatus, handleInputs,
         progress, selectedEvent, loadMessage, saveEvent
     } = props;
-    let onLoadStyle = loadingList ? { opacity:0.4 } : { opacity: 1 };
-
+    let onLoadStyle = loadingStatus ? { opacity:0.4 } : { opacity: 1 };
     return(
         <div className='row col-12 p-0 m-0'>
             <div style={ onLoadStyle } id='fightersList' className='row col-12 m-0'>
                 <MapFighters 
                     fighterList={ fighterList }
                     handleInputs={ handleInputs }
-                    loadingList={ loadingList }
+                    loadingList={ loadingStatus }
                 />
             </div>
             <div className='col-12 p-0 pt-2 text-center position-absolute'>
-                { loadingList ? 
+                { loadingStatus ? 
                     <ul className='col-12 p-0 list-none'>
                         <li className='col-12'>
                             <LoadingIcon loadMessage={ loadMessage } style={{marginTop:'65px'}}/> 
@@ -42,7 +41,7 @@ const EventFightersList = props => {
             </div>
             <div className='col-12'>
                 <ul className='col-12 p-0 list-none'>
-                    { fighterList && !loadingList ? 
+                    { fighterList && !loadingStatus ? 
                         <li className='pt-3'>
                             <a onClick={ ()=> saveEvent( selectedEvent ) } id='list-submitBtn' className='col-12 btn btn-light'>Submit</a>
                         </li>
@@ -57,7 +56,7 @@ const mapStateToprops = state => {
     console.log('state', state )
     return{
         fighterList: state.dataCenter.fighterList,
-        loadingList: state.dataCenter.loadingList,
+        loadingStatus: state.dataCenter.loadingStatus,
         progress: state.dataCenter.progress,
         loadMessage: state.dataCenter.loadMessage,
         selectedEvent: state.dataCenter.selectedEvent
@@ -65,8 +64,8 @@ const mapStateToprops = state => {
 }
 const mapDispatchToprops = dispatch => {
     return{ 
-        handleInputs: (e) => dispatch( HandleInputs(e)),
-        saveEvent: (selct) => dispatch( SubmitEvent(selct))
+        handleInputs: (e) => dispatch( handleInputs(e)),
+        saveEvent: (selct) => dispatch( submitEvent(selct))
     };
 };
 export default connect( mapStateToprops, mapDispatchToprops )( EventFightersList );

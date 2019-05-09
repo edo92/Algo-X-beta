@@ -1,2 +1,2 @@
-export { emitCollectFighters } from './pastEventProgress';
-export { listenCollectProgress } from './pastEventProgress';
+export { emitCollectFighters } from './emitCollectFighters';
+export { listenCollectProgress } from './emitCollectFighters';

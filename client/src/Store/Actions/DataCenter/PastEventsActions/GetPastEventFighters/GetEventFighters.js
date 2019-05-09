@@ -1,19 +1,16 @@
-import { SELECTED_EVENT } from '../../actionTypes';
+import { SELECT_EVENT } from '../../actionTypes';
 import { emitCollectFighters } from '../socketActions/index';
 
-export const GetEventFighters = ( url, eventInfo ) => {
+export const getEventFighters = ( url, eventInfo ) => {
     return dispatch => {
-         // Set collect fighter-list Progress 
-        dispatch( loading( eventInfo ));
-        
-        // emit to collect past event fighters list
-        emitCollectFighters( url ); 
+        dispatch( loading( eventInfo )); // Set collect fighter-list Progress 
+        emitCollectFighters( url ); // emit to collect past event fighters list
     }
 }
 const loading = selected => {
     return{
-        type: SELECTED_EVENT,
-        loadingList: true,
+        type: SELECT_EVENT,
+        loadingStatus: true,
         selectedEvent: selected
     }
 }; 

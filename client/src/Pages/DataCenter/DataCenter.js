@@ -6,8 +6,10 @@ import MenuDir from './Components/MenuDir/Menu';
 import PastEvent from './Components/PastEvents/PastEvents';
 import UpcomingEvent from './Components/UpcomingEvent/UpcomingEvent';
 
-import { GetPastEvents } from '../../Store/Actions/DataCenter/PastEventsActions/index';
+import{ initialData } from '../../Store/Actions/DataCenter/PastEventsActions/index';
+import { getPastEvents } from '../../Store/Actions/DataCenter/PastEventsActions/index';
 import { listenCollectProgress } from '../../Store/Actions/DataCenter/PastEventsActions/socketActions/index';
+import { listenSaveProgress } from '../../Store/Actions/DataCenter/PastEventsActions/socketActions/emitSaveEvent';
 
 
 class DataCenter extends React.Component{
@@ -17,7 +19,9 @@ class DataCenter extends React.Component{
 
     componentDidMount(){
         this.props.getIntData();
-        this.props.listenPastEventProgress()
+        this.props.getPastEvents();
+        this.props.listenPastEventProgress();
+        this.props.listenSaveFightrersProgress();
     }
 
     menuSelect = (e) => {
@@ -51,8 +55,10 @@ class DataCenter extends React.Component{
 };
 const mapDispatchToProps = dispatch => {
     return{ 
-        getIntData: ()=> dispatch( GetPastEvents()),
-        listenPastEventProgress: () => dispatch( listenCollectProgress )
+        getIntData: ()=> dispatch( initialData()),
+        getPastEvents: ()=> dispatch( getPastEvents()),
+        listenPastEventProgress: () => dispatch( listenCollectProgress ),
+        listenSaveFightrersProgress: () => dispatch( listenSaveProgress )
     };
 };
 export default connect( null, mapDispatchToProps )( DataCenter );

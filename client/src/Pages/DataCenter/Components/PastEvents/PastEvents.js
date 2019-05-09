@@ -46,5 +46,5 @@ const PastEvent = props => {
     )
 }
 
-export default PastEvent;
+export default React.memo( PastEvent );
 

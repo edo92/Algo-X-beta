@@ -7,7 +7,7 @@ import './assets/PastEventList.css';
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
 import EventsList from './Components/EventsList';
 
-import { GetPastEvents, GetEventFighters } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
+import { getPastEvents, getEventFighters } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
 
 const PastEventsList = props => {
     let {
@@ -52,8 +52,8 @@ const mapStateToprops = state => {
 }
 const mapDispatchToprops = dispatch => {
     return{ 
-        getMoreEvents: () => dispatch( GetPastEvents()),
-        getFighterList: (url,info) => dispatch( GetEventFighters(url,info))
+        getMoreEvents: () => dispatch( getPastEvents()),
+        getFighterList: (url,info) => dispatch( getEventFighters(url,info))
     };
 };
 export default connect( mapStateToprops, mapDispatchToprops )( React.memo(PastEventsList) );

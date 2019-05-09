@@ -1,3 +1,5 @@
+import { PROGRESS_LOADING, EVENT_SAVED } from '../../actionTypes';
+
 import io from 'socket.io-client';
 let socket = io.connect( 'http://localhost:3001' );
 //algo-x-beta.herokuapp.com
@@ -9,14 +11,27 @@ export const emitSaveEvent = ( event ) => {
 };
 
 export const listenSaveProgress = dispatch => {
-    socket.on('saveEvent', data=>{
-        if( data.progress ) dispatch( progress( data.progress ));
-    })
+    socket.on('saveEvent', data => { 
+        if( data.progress ) {
+            dispatch( progressLoading( data.progress ));
+        }
+        if( data.success ) {
+            dispatch( eventSaved( data.success ));
+        }
+    });
 };
 
-const progress = feedBack => {
+const eventSaved = success => {
     return{
-        //type: SCRAPE_PROGRESS,
-        feedBack: feedBack,
+        type: EVENT_SAVED,
+        loadingStatus: false
+    }
+};
+const progressLoading = progress => {
+    return{
+        type: PROGRESS_LOADING,
+        progress: progress,
+        loadingStatus: true,
+        loadMessage: 'Loading...'
     }
 };

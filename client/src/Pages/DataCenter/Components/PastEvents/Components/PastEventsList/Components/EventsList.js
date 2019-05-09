@@ -27,7 +27,7 @@ class EventsList extends React.Component {
 
         return(
             <div className='col-12 p-0'>
-                { pastEvents.length ? pastEvents.map(( event, i ) => {
+                { pastEvents ? pastEvents.map(( event, i ) => {
                     let eventName = event.name.split(':')[0];
                     let mainEvent = event.name.split(':')[1];
                     let url = event.url;

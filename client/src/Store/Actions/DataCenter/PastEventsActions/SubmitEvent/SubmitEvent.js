@@ -1,30 +1,33 @@
-import { SUBMIT_LIST } from '../../actionTypes';
+import { PROGRESS_LOADING } from '../../actionTypes';
 import { emitSaveEvent } from '../socketActions/emitSaveEvent';
 
-export const SubmitEvent = eventInfo => {
+export const submitEvent = eventInfo => {
     return async ( dispatch, getState ) => {
         dispatch( setLoadingMode());
 
-        let { resultInput, fighterList } = getState().dataCenter;
-        let eventList = makeObject( resultInput, fighterList );
-
-        let event = { eventList, eventInfo }
-        emitSaveEvent( event );
+        let eventList = combineResultInputs( getState().dataCenter );
+        emitSaveEvent({ eventList, eventInfo });
     }
 };
 
-const makeObject = ( input, list )=> {
+const combineResultInputs = ( state ) => {
+    let input = state.resultInput;
+    let list = state.fighterList;
     let result=[];
     for( let i in list ){
-        //concat fightersList with input info
-        result.push({ ...input[list[i].name], ...list[i] });
+        result.push({ 
+            ...input[list[i].name], 
+            ...list[i]
+        });
     }
     return result;       
 };
 
 const setLoadingMode = () => {
     return{
-        type: SUBMIT_LIST,
-        loading: true,
+        type: PROGRESS_LOADING,
+        loadingStatus: true,
+        loadMessage:'hello',
+        progress: 10,
     }
 };

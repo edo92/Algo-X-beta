@@ -1,20 +1,17 @@
 import axios from 'axios';
-import { ERROR_OCCURED, PAST_EVENTS, UPCOMING_EVENT, LOADING_MORE_EVENTS } from '../../actionTypes';
+import { ERROR_OCCURED, PAST_EVENTS, NEXT_LOAD } from '../../actionTypes';
 import { CANT_GET_PAST_EVENTS } from '../../messageTypes';
 
-export const GetPastEvents = () => {
+export const getPastEvents = () => {
     return async ( dispatch, getState ) => {
-        let page = getState().dataCenter.eventPage + 1;
-        try{
-            // Load more events icon
-            dispatch( loadingMore( true )); 
+        try {
+            dispatch( nextLoad( true ));
 
-            // Collect past events list
+            let page = getState().dataCenter.eventPage + 1;
             let pastEvents = await axios.get(`/api/scrape/past/events/${page}/`);
-            
-            // Save past events
-            let pastSuccess = pastEvents.data.success;
-            dispatch( pastEventsList( pastSuccess, page ));
+
+            let eventList = pastEvents.data.success;
+            dispatch( savePastEvents( eventList, page ));
 
         } catch( error ) {
             dispatch( errorOccured( CANT_GET_PAST_EVENTS ));
@@ -22,22 +19,21 @@ export const GetPastEvents = () => {
     }
 };
 
-const pastEventsList = ( events, page ) => {
-    return{
+const savePastEvents = ( events, page ) => {
+    return {
         type: PAST_EVENTS,
         pastEventsList: events,
-        eventPage: page,
-        loadNext: false
+        eventPage: page
     }
 }
-const loadingMore = isLoad => {
+const nextLoad = isLoad => {
     return{
-        type: LOADING_MORE_EVENTS,
-        loadNext: isLoad
+        type: NEXT_LOAD,
+        loadNext: isLoad,
     }
 }
 const errorOccured = message => {
-    return{
+    return {
         type: ERROR_OCCURED,
         errorOccured: message,
     }
