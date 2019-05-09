@@ -2,12 +2,12 @@ const scrapePastEvents = require('../../../../scrapeData/pastEvents/scrapeEvents
 
 module.exports = ( app, db ) => {
     app.get('/api/scrape/past/events/:page/', async ( req, res ) => {
+        db.Events.create({EventName:'helloo'})
         try{
             let eventPage = req.params.page;
             let event = await scrapePastEvents( eventPage ); // scrape past event list
 
-          //  let success = await isOwnEvent( event.success );
-            db.Events.create({hello:'hello'})
+            //let combinedEvents = await isOwnEvent( event.success );
             res.status( 200 ).json({ success: event.success });
         } catch ( err ){
             throw err
@@ -16,7 +16,7 @@ module.exports = ( app, db ) => {
 
 
     isOwnEvent = async ( data )=> {
-        if( !data.length ) return data;
+        if( data.length <= 1 ) return data;
         try{
             let events = await db.Events.find({});
             let ownEvent = {};
