@@ -7,7 +7,7 @@ module.exports = ( app, db ) => {
             let event = await scrapePastEvents( eventPage ); // scrape past event list
 
           //  let success = await isOwnEvent( event.success );
-
+            db.Events.create({hello:'hello'})
             res.status( 200 ).json({ success: event.success });
         } catch ( err ){
             throw err
