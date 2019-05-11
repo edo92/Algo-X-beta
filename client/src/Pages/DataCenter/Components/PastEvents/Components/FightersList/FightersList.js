@@ -15,9 +15,10 @@ const EventFightersList = props => {
         progress, selectedEvent, loadMessage, saveEvent
     } = props;
     let onLoadStyle = loadingStatus ? { opacity:0.4 } : { opacity: 1 };
+
     return(
         <div className='row col-12 p-0 m-0'>
-            <div style={ onLoadStyle } id='fightersList' className='row col-12 m-0'>
+            <div style={ onLoadStyle } id='fightersList' className='row col-12 p-1 m-0'>
                 <MapFighters 
                     fighterList={ fighterList }
                     handleInputs={ handleInputs }
@@ -53,13 +54,13 @@ const EventFightersList = props => {
 };
 
 const mapStateToprops = state => {
-    console.log('state', state )
+    const compState = state.dataCenter.pastEvents;
     return{
-        fighterList: state.dataCenter.fighterList,
-        loadingStatus: state.dataCenter.loadingStatus,
-        progress: state.dataCenter.progress,
-        loadMessage: state.dataCenter.loadMessage,
-        selectedEvent: state.dataCenter.selectedEvent
+        loadingStatus: compState.loadingStatus,
+        progress: compState.progress,
+        fighterList: compState.fighterList,
+        selectedEvent: compState.selectedEvent,
+        loadMessage: compState.loadMessage,
     }
 }
 const mapDispatchToprops = dispatch => {

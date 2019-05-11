@@ -1,84 +1,121 @@
 import { 
-    PAST_EVENTS, SUBMIT_EVENT, NEXT_LOAD, ERROR_OCCURED,
+    PAST_EVENTS, UPCOMING_EVENT, NEXT_LOAD, ERROR_OCCURED,
     EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT,
     HANDLE_INPUT_PAST_EVENT, EVENT_SAVED
 } from '../Actions/DataCenter/actionTypes';
  
 const initialState = {
-    pastEventsList:[],
-    resultInput:{},
-    upcomeInput:{},
-    eventPage: 0,
-    progress: 0,
+    pastEvents: {
+        pastEventsList:[],
+        eventPage: 0,
+        progress: 0,
+        resultInput:{},
+    },
+    upcomeEvent: {
+        upcomeFighterList: [],
+    }
 };
 
 const dataCenter = ( state = initialState, action )=> {
     switch( action.type ){
     
+// ----------> Past Event State <----------
     case PAST_EVENTS:
         return {
             ...state,
-            pastEventsList: [
-                ...state.pastEventsList, ...action.pastEventsList
-            ],
-            eventPage: action.eventPage,
-            loadNext: false
+            pastEvents: {
+                ...state.pastEvents,
+                pastEventsList: [
+                    ...state.pastEvents.pastEventsList, ...action.pastEventsList
+                ],
+                eventPage: action.eventPage,
+                loadNext: false
+            }
         }
 
     case NEXT_LOAD:
         return {
             ...state,
-            loadNext: action.loadNext,
+            pastEvents: {
+                ...state.pastEvents,
+                loadNext: action.loadNext,
+            }
         }
 
     case SELECT_EVENT:
         return {
             ...state,
-            loadingStatus: action.loadingStatus,
-            selectedEvent: action.selectedEvent,
+            pastEvents: {
+                ...state.pastEvents,
+                loadingStatus: action.loadingStatus,
+                selectedEvent: action.selectedEvent
+            }
         }
 
     case EVENT_FIGHTERS:
         return {
             ...state,
-            fighterList: action.fighterList,
-            loadingStatus: false,
-            progress: 0
+            pastEvents: {
+                ...state.pastEvents,
+                fighterList: action.fighterList,
+                loadingStatus: false,
+                progress: 0
+            }
         }     
 
     case EVENT_SAVED:
         return {
             ...state,
-            loadingStatus: false,
+            pastEvents: {
+                ...state.pastEvents,
+                loadingStatus: false,
+            }
         }
 
     case PROGRESS_LOADING:
         return{
             ...state,
-            progress: state.progress + action.progress,
-            loadMessage: state.loadMessage !== action.loadMessage ? action.loadMessage : '',
-            loadingStatus: action.loadingStatus
+            pastEvents: {
+                ...state.pastEvents,
+                progress: state.pastEvents.progress + action.progress,
+                loadMessage: state.loadMessage !== action.loadMessage ? action.loadMessage : '',
+                loadingStatus: action.loadingStatus
+            }
         }
 
     case HANDLE_INPUT_PAST_EVENT:
         let { name, placeholder, value } = action.input;
         return {
             ...state,
-            resultInput: {
-                ...state.resultInput,
-                [name]: {
-                    ...state.resultInput[name],
-                    [placeholder]: value,
-                },
+            pastEvents: {
+                ...state.pastEvents,
+                resultInput: {
+                    ...state.pastEvents.resultInput,
+                    [name]: {
+                        ...state.pastEvents.resultInput[name],
+                        [placeholder]: value,
+                    },
+                }
             }
         }
 
     case ERROR_OCCURED:
-        return{
+        return {
             ...state,
-            errorMessage: action.errorOccured
+            pastEvents: {
+                ...state.pastEvents,
+                errorMessage: action.errorOccured
+            }
         }
 
+
+// ----------> Upcoming Event State <----------
+
+    case UPCOMING_EVENT:
+        return {
+            ...state,
+            upcomeEvent: action.upcomeEvent
+        }
     
         default:
             return state;

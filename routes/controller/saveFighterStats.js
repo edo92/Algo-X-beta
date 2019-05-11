@@ -3,6 +3,7 @@ const docId = '5cd4ad19e7179a2e1964ee86';
 
 module.exports = async ( stats ) => {
     const db = require('../../models/index');
+    db.Statistics.create({})
     makeObject( stats ).forEach( async item=> {
         try{
             let isExists = await isFighter( item );

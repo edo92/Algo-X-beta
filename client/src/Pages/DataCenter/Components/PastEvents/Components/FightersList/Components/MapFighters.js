@@ -5,7 +5,7 @@ const MapFighters = props => {
     let { handleInputs, fighterList } = props;
 
     return(
-            <div>
+            <div className='col-12 p-2'>
             { fighterList ? fighterList.map(( fighter, i )=> {
                 let { finish, finishMethod, round } = fighter.outcome;
                 return(

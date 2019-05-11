@@ -13,11 +13,14 @@ module.exports = io => {
         });
 
         socket.on('saveEvent', client => { // Room
-            console.log('check socket' )
             socket.join( client.someId );
             savePastEvent( io, client );
         });
 
+        socket.on('saveUpcomeEvent', client => {
+            socket.join( client.someId );
+
+        })
         socket.on( 'disconnect', data => { // Disconnect socket 
             socket.disconnect(); 
         });

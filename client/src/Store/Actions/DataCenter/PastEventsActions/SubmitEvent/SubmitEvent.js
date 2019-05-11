@@ -5,14 +5,14 @@ export const submitEvent = eventInfo => {
     return async ( dispatch, getState ) => {
         dispatch( setLoadingMode());
 
-        let eventList = combineResultInputs( getState().dataCenter );
+        let { resultInput, fighterList } = getState().dataCenter.pastEvents;
+        let eventList = combineResultInputs( resultInput, fighterList );
+
         emitSaveEvent({ eventList, eventInfo });
     }
 };
 
-const combineResultInputs = ( state ) => {
-    let input = state.resultInput;
-    let list = state.fighterList;
+const combineResultInputs = ( input, list ) => {
     let result=[];
     for( let i in list ){
         result.push({ 
@@ -21,13 +21,13 @@ const combineResultInputs = ( state ) => {
         });
     }
     return result;       
-};
+}; 
 
 const setLoadingMode = () => {
     return{
         type: PROGRESS_LOADING,
         loadingStatus: true,
-        loadMessage:'hello',
+        loadMessage:'Initializing',
         progress: 10,
     }
 };

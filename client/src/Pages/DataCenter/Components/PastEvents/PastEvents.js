@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Alert } from 'antd';
+import { Divider } from 'antd';
 import './assets/CSS/PastEvent.css';
 
 import PastEventsList from './Components/PastEventsList/PastEventsList';
@@ -22,23 +22,34 @@ const PastEvent = props => {
                     </li>
                 </ul>
             </div>
-            <div id='content-body' className='row col-12 m-0 p-0 justify-content-center'>
-                <div className='col-12 col-md-6 p-2'>
-                    <div className='col-12 p-0 container-style'>
-                        <div className='col-12 p-0'>
-                            <p className='m-0 p-2 m-1 font-w-700'>Past Events</p>
-                        </div>
-                        <Divider className='mt-0 mb-3'/>
-                        <PastEventsList/>
+            
+            <div className='col-12 p-1'>
+                <div id='content-body' className='row col-12 p-1 m-0'>
+                    <div className='col-12 col-md-6 p-1'>
+                        <ul className='col-12 p-0 container-style list-none'>
+                            <li className='col-12 p-0'>
+                                <div className='col-12 p-2'>
+                                    <p className='mb-2 p-2 font-w-700'>Past Events</p>
+                                    <Divider className='mt-0 mb-1'/>
+                                </div>
+                            </li>
+                            <li className='col-12 p-0'>
+                                <PastEventsList/>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div className='col-12 col-md-6 p-2'>
-                    <div className='col-12 p-0 container-style'>
-                        <div className='col-12 p-0'>
-                            <p className='m-0 p-2 m-1 font-w-700'>Fighters</p>
-                        </div>
-                        <Divider className='mt-0 mb-3'/>
-                        <EventFightersList/>
+                    <div className='col-12 col-md-6 p-1'>
+                        <ul className='col-12 p-0 container-style list-none'>
+                            <li className='col-12 p-0'>
+                                <div className='col-12 p-2'>
+                                    <p className='mb-2 p-2 font-w-700'>Fighters</p>
+                                    <Divider className='mt-0 mb-1'/>
+                                </div>
+                            </li>
+                            <li className='col-12 p-0'>
+                                <EventFightersList/>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

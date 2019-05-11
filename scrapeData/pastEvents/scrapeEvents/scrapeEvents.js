@@ -17,8 +17,8 @@ module.exports = async ( page )=> {
 
         if( name && url ) eventsArr.push({ name, url, date });
     });
-    
-    if( eventsArr.length ) return { success: eventsArr };
+    console.log('eventsArr',eventsArr)
+    if( eventsArr ) return { success: eventsArr };
     else return { error: 'Cant Collect Past Events Data' };
 };
 

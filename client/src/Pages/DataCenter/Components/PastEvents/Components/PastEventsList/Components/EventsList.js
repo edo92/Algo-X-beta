@@ -15,7 +15,6 @@ class EventsList extends React.Component {
             }
         })
     };
-    
     selectEventHandler = ( url, event, eventInfo ) => {
         this.selectedEvent( event );
         this.props.getFighterList( url, eventInfo );
@@ -26,7 +25,7 @@ class EventsList extends React.Component {
         let pastEvents = this.props.pastEvents;
 
         return(
-            <div className='col-12 p-0'>
+            <div className='col-12' style={{padding:'.2rem'}}>
                 { pastEvents ? pastEvents.map(( event, i ) => {
                     let eventName = event.name.split(':')[0];
                     let mainEvent = event.name.split(':')[1];
@@ -34,8 +33,7 @@ class EventsList extends React.Component {
                     let eventInfo = { eventName: `${eventName}:${mainEvent}`, date: event.date, url: event.url };
 
                     return(
-                        <ul
-                            className='row col-12 m-0 p-0 p-1 mb-1 list-none'
+                        <ul className='row col-12 p-1 m-0 mb-1 list-none'
                             id='event-col'
                             key={mainEvent+i}
                             onClick={ ()=> this.selectEventHandler(url, mainEvent, eventInfo) } 

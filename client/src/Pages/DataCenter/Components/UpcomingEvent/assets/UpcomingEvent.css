@@ -9,3 +9,7 @@
 .upcome-stats-cont{
     height: 200px;
 }
+
+.countdown .ant-statistic-content{
+    font-size: 17px;
+}

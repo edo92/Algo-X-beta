@@ -3,14 +3,23 @@ import { connect } from 'react-redux';
 import { Divider } from 'antd';
 import './assets/UpcomingEvent.css';
 
+import { getUpcomingEvent } from '../../../../Store/Actions/DataCenter/UpcomingEvent/index';
+import FighterList from './Components/FighterList/FighterList';
+import UpcomEventInfo from './Components/UpcomEventInfo/UpcomEventInfo';
+import { emitSaveUpcomeEvent } from '../../../../Store/Actions/DataCenter/UpcomingEvent/socketActions/emitSaveUpcome';
 
 class UpcomingEvent extends React.Component{
     constructor(props){
         super(props)
 
     }
+
+    componentDidMount(){
+        this.props.upcomingEvent();
+    }
+
     render(){
-        let { upComEvent, handleInputs, submit } = this.props;
+        let { upcomeEvent, saveUpcomeEvnet } = this.props;
 
         return(
             <div id='content-body' className='row col-12 p-0 m-0'>
@@ -21,15 +30,21 @@ class UpcomingEvent extends React.Component{
                                 <p className='m-0 p-2 m-1 font-w-700'>Upcoming Events</p>
                             </div>
                             <Divider className='mt-0 mb-3'/>
-                           
+                            <UpcomEventInfo
+                                upcomeEvent={ upcomeEvent }
+                            />
                         </div>
                     </div>
                     <div className='col-12 col-md-6 p-2 lineUp-cont'>
-                        <div className='col-12 container-style'>
+                        <div className='col-12 p-0 container-style'>
                             <div className='col-12 p-0'>
                                 <p className='m-0 p-2 m-1 font-w-700'>Line Up</p>
                             </div>
                             <Divider className='mt-0 mb-3'/>
+                            <FighterList
+                                fighters={ upcomeEvent.fighterList }
+                                saveUpcome={ saveUpcomeEvnet }
+                            />
                         </div>
                     </div>       
                 </div>
@@ -39,10 +54,14 @@ class UpcomingEvent extends React.Component{
 };
 
 const mapStateToProps = state => {
-
+    return {
+        upcomeEvent: state.dataCenter.upcomeEvent
+    }
 };
 const mapDispatchToProps = dispatch => {
     return{ 
+        upcomingEvent: ()=> dispatch( getUpcomingEvent()),
+        saveUpcomeEvnet: ()=> dispatch( emitSaveUpcomeEvent )
     };
 };
 export default connect( mapStateToProps, mapDispatchToProps )( UpcomingEvent );

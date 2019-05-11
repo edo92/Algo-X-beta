@@ -7,14 +7,14 @@ export const getPastEvents = () => {
         try {
             dispatch( nextLoad( true ));
 
-            let page = getState().dataCenter.eventPage + 1;
-            let pastEvents = await axios.get(`/api/scrape/past/events/${page}/`);
+            let page = getState().dataCenter.pastEvents.eventPage + 1;
+            let pastEvents = await axios.get(`/api/scrape/past/events/${1}/`);
 
             let eventList = pastEvents.data.success;
             dispatch( savePastEvents( eventList, page ));
 
         } catch( error ) {
-            dispatch( errorOccured( CANT_GET_PAST_EVENTS ));
+            if( error ) dispatch( errorOccured( CANT_GET_PAST_EVENTS ));
         }
     }
 };
@@ -37,4 +37,4 @@ const errorOccured = message => {
         type: ERROR_OCCURED,
         errorOccured: message,
     }
-}
+} 

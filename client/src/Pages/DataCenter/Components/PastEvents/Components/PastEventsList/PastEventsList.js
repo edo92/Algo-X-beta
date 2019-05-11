@@ -12,16 +12,15 @@ import { getPastEvents, getEventFighters } from '../../../../../../Store/Actions
 const PastEventsList = props => {
     let {
         pastEvents, getMoreEvents, loadNext,
-        getFighterList, selectedEvent
+        getFighterList
     } = props;
  
     return(
-        <div id='pastEvent-container' className='col-12'>
-            <div className='col-12 p-0'>
+        <div id='pastEvent-container' className='col-12 p-1'>
+            <div className='col-12 p-1'>
                 <EventsList 
                     pastEvents={ pastEvents }
                     getFighterList={ getFighterList }
-                    selectedEvent={ selectedEvent }
                 />
                 { !pastEvents.length ? 
                     <div className='col-12 text-center'>
@@ -30,7 +29,7 @@ const PastEventsList = props => {
                 null }
             </div>
             { pastEvents.length ?
-                <div className='col-12'>
+                <div className='col-12 p-1'>
                     <div className='row col-12 m-0 p-0 py-3 justify-content-center'>
                         <a onClick={ getMoreEvents } className='text-center font-w-600 col-10'>Load More</a>
                         <span className='position-absolute' style={{marginLeft:'3.3rem'}}>
@@ -45,9 +44,8 @@ const PastEventsList = props => {
 
 const mapStateToprops = state => {
     return{
-        pastEvents: state.dataCenter.pastEventsList,
-        loadNext: state.dataCenter.loadNext,
-        selectedEvent: state.dataCenter.selectedEvent
+        pastEvents: state.dataCenter.pastEvents.pastEventsList,
+        loadNext: state.dataCenter.pastEvents.loadNext,
     }
 }
 const mapDispatchToprops = dispatch => {
