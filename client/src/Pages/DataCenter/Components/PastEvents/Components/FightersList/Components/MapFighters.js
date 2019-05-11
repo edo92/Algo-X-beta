@@ -1,8 +1,9 @@
 import React from 'react';
-import { Input, Badge } from 'antd';
+import { Badge } from 'antd';
+import PointsInput from '../../../../PointsInput/PointsInput';
 
 const MapFighters = props => {
-    let { handleInputs, fighterList } = props;
+    let { handleInputs, fighterList, saveEvent, selectedEvent, loadingStatus } = props;
 
     return(
             <div className='col-12 p-2'>
@@ -23,22 +24,19 @@ const MapFighters = props => {
                             </ul>
                         </li>
                         <li className='col-6 p-1'>
-                            <ul className='row col-12 m-0 p-1 pt-1 list-none'>
-                                <li className='col-6 p-0'>
-                                    <div className='col-12 p-1'>
-                                        <Input onChange={ handleInputs } name={ fighter.name } placeholder='price' />
-                                    </div>
-                                </li>
-                                <li className='col-6 p-0'>
-                                    <div className='col-12 p-1'>
-                                        <Input onChange={ handleInputs } name={ fighter.name } placeholder='fftp'/>
-                                    </div>
-                                </li>
-                            </ul>
+                            <PointsInput 
+                                name={ fighter.name }
+                                handleInputs={ handleInputs }
+                            />
                         </li>
                     </ul> 
                 )
             }) : null }
+            <div className='col-12 p-0'>
+                { fighterList ? <div className='pt-3'>
+                    <a onClick={ ()=> saveEvent( selectedEvent ) } className='col-12 btn btn-light bttn-submit'>Submit</a>
+                </div> : null }
+            </div>                           
         </div>        
     )
 }

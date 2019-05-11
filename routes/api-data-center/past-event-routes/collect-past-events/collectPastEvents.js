@@ -6,7 +6,8 @@ module.exports = ( app, db ) => {
             let eventPage = req.params.page;
             let event = await scrapePastEvents( eventPage ); // scrape past event list
 
-            let combinedEvents = await isOwnEvent( event.success );
+            let combinedEvents = await isOwnEvent( event.success, db );
+            
             res.status( 200 ).json({ success: combinedEvents });
         } catch ( err ){
             throw err
@@ -14,26 +15,16 @@ module.exports = ( app, db ) => {
     });
 
 
-    isOwnEvent = async ( data )=> {
-        if( data.length <= 1 ) return data;
-        try{
-            let events = await db.Events.find({});
-            let ownEvent = {};
-            if( events ){
-                for( let i in events ){
-                    ownEvent[events[i].EventName] = true;
-                }
-                for( let i in data ){
-                    if( ownEvent[data[i].name] ){
-                        data[i].ownEvent = true;
-                    } else {
-                        data[i].ownEvent = false;
-                    }
-                }
-                return data;
-            }else {
-                return data;
+    isOwnEvent = async ( events, db )=> {
+        for( let i in events ){
+            let isEvent = await db.Events.find({ EventName: events[i].name });
+            if( isEvent.length ){
+                events[i].ownEvent = true;
+            } else {
+                events[i].ownEvent = false;
             }
-        } catch( error ){ return { error: "Can't Get Events" }};
-    }
+        }
+        return events;
+    };
+    
 };

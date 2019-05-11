@@ -4,6 +4,8 @@ import { Divider } from 'antd';
 import './assets/UpcomingEvent.css';
 
 import { getUpcomingEvent } from '../../../../Store/Actions/DataCenter/UpcomingEvent/index';
+import { handleInputs } from '../../../../Store/Actions/DataCenter/HandleInputs/HandleInputs';
+
 import FighterList from './Components/FighterList/FighterList';
 import UpcomEventInfo from './Components/UpcomEventInfo/UpcomEventInfo';
 import { emitSaveUpcomeEvent } from '../../../../Store/Actions/DataCenter/UpcomingEvent/socketActions/emitSaveUpcome';
@@ -19,8 +21,7 @@ class UpcomingEvent extends React.Component{
     }
 
     render(){
-        let { upcomeEvent, saveUpcomeEvnet } = this.props;
-
+        let { upcomeEvent, saveUpcomeEvenet, pointsHandleInput } = this.props;
         return(
             <div id='content-body' className='row col-12 p-0 m-0'>
                 <div className='row col-12 p-2 m-0 pt-3 mt-3 justify-content-center'>
@@ -43,7 +44,8 @@ class UpcomingEvent extends React.Component{
                             <Divider className='mt-0 mb-3'/>
                             <FighterList
                                 fighters={ upcomeEvent.fighterList }
-                                saveUpcome={ saveUpcomeEvnet }
+                                saveUpcome={ saveUpcomeEvenet }
+                                handleInputs={ pointsHandleInput }
                             />
                         </div>
                     </div>       
@@ -55,13 +57,14 @@ class UpcomingEvent extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        upcomeEvent: state.dataCenter.upcomeEvent
+        upcomeEvent: state.dataCenter.upcomeEvent.upcomeEvent
     }
 };
 const mapDispatchToProps = dispatch => {
     return{ 
         upcomingEvent: ()=> dispatch( getUpcomingEvent()),
-        saveUpcomeEvnet: ()=> dispatch( emitSaveUpcomeEvent )
+        pointsHandleInput: (e)=> dispatch( handleInputs(e)),
+        saveUpcomeEvenet: ()=> dispatch( emitSaveUpcomeEvent ),
     };
 };
 export default connect( mapStateToProps, mapDispatchToProps )( UpcomingEvent );

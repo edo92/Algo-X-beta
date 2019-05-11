@@ -1,5 +1,5 @@
 #fightersList{
-    max-height: 395px;
+    max-height: 460px;
     overflow: scroll;
 }
 
@@ -7,10 +7,4 @@
     border: 1px solid #eaeaea;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,.07);
     border-radius: 3px;
-}
-
-#list-submitBtn{
-    border:1px solid #2971ec;
-    color:#2971ec;
-    bottom: 0;
 }

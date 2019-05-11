@@ -2,3 +2,7 @@
     overflow: scroll;
     max-height: 450px;
 }
+
+#upcome-fighters-list{
+    min-height: 25px !important;
+}

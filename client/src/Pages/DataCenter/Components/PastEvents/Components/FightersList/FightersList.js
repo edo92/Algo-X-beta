@@ -7,25 +7,19 @@ import './assets/CSS/FightersList.css';
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
 import MapFighters from './Components/MapFighters';
 
-import { handleInputs, submitEvent } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
+import { submitEvent } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
+import { handleInputs } from '../../../../../../Store/Actions/DataCenter/HandleInputs/HandleInputs';
 
 const EventFightersList = props => {
-    let {
-        fighterList, loadingStatus, handleInputs,
-        progress, selectedEvent, loadMessage, saveEvent
-    } = props;
+    let { loadMessage ,loadingStatus, progress } = props;
     let onLoadStyle = loadingStatus ? { opacity:0.4 } : { opacity: 1 };
 
     return(
         <div className='row col-12 p-0 m-0'>
             <div style={ onLoadStyle } id='fightersList' className='row col-12 p-1 m-0'>
-                <MapFighters 
-                    fighterList={ fighterList }
-                    handleInputs={ handleInputs }
-                    loadingList={ loadingStatus }
-                />
+                <MapFighters  { ...props }/>
             </div>
-            <div className='col-12 p-0 pt-2 text-center position-absolute'>
+            <div className='col-12 p-0 pt-2 text-center pos-absolute'>
                 { loadingStatus ? 
                     <ul className='col-12 p-0 list-none'>
                         <li className='col-12'>
@@ -39,15 +33,6 @@ const EventFightersList = props => {
                         </li>
                     </ul>
                 : null }       
-            </div>
-            <div className='col-12'>
-                <ul className='col-12 p-0 list-none'>
-                    { fighterList && !loadingStatus ? 
-                        <li className='pt-3'>
-                            <a onClick={ ()=> saveEvent( selectedEvent ) } id='list-submitBtn' className='col-12 btn btn-light'>Submit</a>
-                        </li>
-                    : null }
-                </ul>
             </div>
         </div> 
     )

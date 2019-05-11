@@ -19,3 +19,4 @@ export const SELECT_EVENT = 'SELECT_EVENT';
 
 //-------- UPCOMING ------------
 export const UPCOMING_EVENT = 'UPCOMING_EVENT';
+export const UPCOME_EVENT_HANDLEINPUTS = 'UPCOME_EVENT_HANDLEINPUTS';

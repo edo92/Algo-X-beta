@@ -20,6 +20,11 @@
     font-weight: 500 !important;
 }
 
+/* --- Position --- */
+.pos-absolute{
+    position: absolute;
+}
+
 /* --- Overflow --- */
 .ov-scroll{
     overflow-y: scroll;
@@ -62,4 +67,13 @@
         visibility: hidden;
         display: none;
     }
+}
+
+/* ---> Button styles <--- */
+
+.bttn-submit{
+    border:1px solid #2971ec;
+    color:#2971ec !important;
+    bottom: 0;
+    color:#fff;
 }
