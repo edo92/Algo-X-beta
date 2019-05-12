@@ -18,11 +18,11 @@ module.exports = ( app, db ) => {
     isOwnEvent = async ( events, db )=> {
         for( let i in events ){
             let isEvent = await db.Events.find({ EventName: events[i].name });
-            if( isEvent.length ){
+
+            if( isEvent.length )
                 events[i].ownEvent = true;
-            } else {
+            else 
                 events[i].ownEvent = false;
-            }
         }
         return events;
     };
