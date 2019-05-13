@@ -17,7 +17,7 @@ const EventFightersList = props => {
     return(
         <div className='row col-12 p-0 m-0'>
             <div style={ onLoadStyle } id='fightersList' className='row col-12 p-1 m-0'>
-                <MapFighters  { ...props }/>
+                <MapFighters { ...props }/>
             </div>
             <div className='col-12 p-0 pt-2 text-center pos-absolute'>
                 { loadingStatus ? 
@@ -39,6 +39,7 @@ const EventFightersList = props => {
 };
 
 const mapStateToprops = state => {
+    console.log('state', state )
     const compState = state.dataCenter.pastEvents;
     return{
         loadingStatus: compState.loadingStatus,

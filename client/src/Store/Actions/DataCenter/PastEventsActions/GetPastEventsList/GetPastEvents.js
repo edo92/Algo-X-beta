@@ -8,7 +8,7 @@ export const getPastEvents = () => {
             dispatch( nextLoad( true ));
 
             let page = getState().dataCenter.pastEvents.eventPage + 1;
-            let pastEvents = await axios.get(`/api/scrape/past/events/${1}/`);
+            let pastEvents = await axios.get(`/api/scrape/past/events/${page}/`);
 
             let eventList = pastEvents.data.success;
             dispatch( savePastEvents( eventList, page ));

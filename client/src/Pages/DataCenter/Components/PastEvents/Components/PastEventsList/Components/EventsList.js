@@ -9,7 +9,7 @@ class EventsList extends React.Component {
         let selectEl = Object.keys(this.state)[0];
         if( selectEl ) delete this.state[selectEl];
         this.setState({
-            [event]: { 
+            [event.mainEvent]: { 
                 background: 'linear-gradient( rgba(73, 97, 185, 0.85) 6%, rgba(0, 57, 119, 0.85) 97% )', 
                 color:'#ffff' 
             }

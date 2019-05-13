@@ -10,10 +10,7 @@ import EventsList from './Components/EventsList';
 import { getPastEvents, getEventFighters } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
 
 const PastEventsList = props => {
-    let {
-        pastEvents, getMoreEvents, loadNext,
-        getFighterList
-    } = props;
+    let { pastEvents, getMoreEvents, loadNext, getFighterList } = props;
  
     return(
         <div id='pastEvent-container' className='col-12 p-1'>
@@ -31,8 +28,8 @@ const PastEventsList = props => {
             { pastEvents.length ?
                 <div className='col-12 p-1'>
                     <div className='row col-12 m-0 p-0 py-3 justify-content-center'>
-                        <a onClick={ getMoreEvents } className='text-center font-w-600 col-10'>Load More</a>
-                        <span className='position-absolute' style={{marginLeft:'3.3rem'}}>
+                        <a onClick={ getMoreEvents } className='col-10 text-center font-w-600'>Load More</a>
+                        <span className='position-absolute ml-3_3'>
                             { loadNext ? <Icon type="loading" spin={ true }/> : null }
                         </span>
                     </div>
@@ -43,10 +40,10 @@ const PastEventsList = props => {
 }
 
 const mapStateToprops = state => {
-    console.log('state', state )
+    let compState = state.dataCenter.pastEvents;
     return{
-        pastEvents: state.dataCenter.pastEvents.pastEventsList,
-        loadNext: state.dataCenter.pastEvents.loadNext,
+        pastEvents: compState.pastEventsList,
+        loadNext: compState.loadNext,
     }
 }
 const mapDispatchToprops = dispatch => {

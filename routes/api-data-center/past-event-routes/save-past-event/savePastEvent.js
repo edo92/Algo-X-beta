@@ -5,7 +5,6 @@ const saveFighterStats = require('../../../controller/saveFighterStats');
 module.exports = async ( io, event ) => {
     let { eventInfo } = event;
     let id = event.someId;
-
     if( eventInfo ){
         try{
             let fighterStats = await collectFighterStats( eventInfo.url, feedBack ); // scrape fighter stats

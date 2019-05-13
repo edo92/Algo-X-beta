@@ -1,16 +1,18 @@
 const db = require('../../models/index');
 
 module.exports = async ( event ) => { 
+    console.log('checking imp' , event )
+
     let { eventList, eventInfo } = event;
-    let { eventName, mainEvant, date } = eventInfo;
+    let { eventName, mainEvent, date } = eventInfo;
     try{
         let saved = await db.Events.create({
-            EventName: `${eventName}:${mainEvant}`,
+            EventName: `${eventName}:${mainEvent}`,
             EventDate: date,
             Fighters: eventList,
         });
         
         if( saved ) return { success: 'success' };
 
-    } catch( error ) {throw error; return { error:'Saving Events Was Not Successful' }};    
+    } catch( error ) {console.log('error', error ) ; return { error:'Saving Events Was Not Successful' }};    
 }; 
