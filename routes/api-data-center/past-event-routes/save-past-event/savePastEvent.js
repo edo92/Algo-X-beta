@@ -3,8 +3,8 @@ const savePastEvent = require('../../../controller/savePastEvent');
 const saveFighterStats = require('../../../controller/saveFighterStats');
 
 module.exports = async ( io, event ) => {
+    let { eventInfo } = event;
     let id = event.someId;
-    let eventInfo = event.eventInfo;
 
     if( eventInfo ){
         try{

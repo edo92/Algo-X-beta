@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from 'antd';
+import { Badge, Progress } from 'antd';
 import './assets/CSS/FighterList.css';
 
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
@@ -9,6 +9,8 @@ const FighterList = props => {
     let fighterList = props.fighters;
     let submitEvent = props.saveUpcome;
     let handleInputs = props.handleInputs;
+    let progress = props.progress;
+    let loadingStatus = props.loadingStatus;
 
     return(
        <div id='upcome-fighters-container' className='col-12 p-2'>
@@ -32,7 +34,7 @@ const FighterList = props => {
                                     <PointsInput 
                                         name={ name }
                                         handleInputs={ handleInputs }
-                                        option={'UPCOME'}
+                                        option={'upcomeEvent'}
                                     />
                                 </div>
                             </div>
@@ -42,6 +44,14 @@ const FighterList = props => {
                         <LoadingIcon size={'large'} style={{marginTop:'55px'}}/>
                     </div>
                 }
+                { loadingStatus ? 
+                    <div className='col-12 p-0'>
+                        <Progress
+                            percent={ progress }
+                            status='active'
+                        />
+                    </div> 
+                : null }
             </div>
             { fighterList ?
                 <div className='col-12 p-0 pt-2'>

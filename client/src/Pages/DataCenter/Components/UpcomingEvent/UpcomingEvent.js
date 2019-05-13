@@ -21,7 +21,7 @@ class UpcomingEvent extends React.Component{
     }
 
     render(){
-        let { upcomeEvent, saveUpcomeEvent, pointsHandleInput } = this.props;
+        let { upcomeEvent, saveUpcomeEvent, pointsHandleInput, progress,loadingStatus } = this.props;
         return(
             <div id='content-body' className='row col-12 p-0 m-0'>
                 <div className='row col-12 p-2 m-0 pt-3 mt-3 justify-content-center'>
@@ -46,6 +46,8 @@ class UpcomingEvent extends React.Component{
                                 fighters={ upcomeEvent.fighterList }
                                 saveUpcome={ saveUpcomeEvent }
                                 handleInputs={ pointsHandleInput }
+                                progress={ progress }
+                                loadingStatus={ loadingStatus }
                             />
                         </div>
                     </div>       
@@ -58,7 +60,9 @@ class UpcomingEvent extends React.Component{
 const mapStateToProps = state => {
     console.log('state', state )
     return {
-        upcomeEvent: state.dataCenter.upcomeEvent.upcomeEvent
+        upcomeEvent: state.dataCenter.upcomeEvent.upcomeEvent,
+        progress: state.dataCenter.upcomeEvent.progress,
+        loadingStatus: state.dataCenter.upcomeEvent.loadingStatus,
     }
 };
 const mapDispatchToProps = dispatch => {

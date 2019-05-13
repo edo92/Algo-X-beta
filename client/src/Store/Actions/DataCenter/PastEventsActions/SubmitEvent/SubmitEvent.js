@@ -20,14 +20,15 @@ const combineResultInputs = ( input, list ) => {
             ...list[i]
         });
     }
-    return result;       
+    return result; 
 }; 
-
+ 
 const setLoadingMode = () => {
     return{
         type: PROGRESS_LOADING,
         loadingStatus: true,
         loadMessage:'Initializing',
         progress: 10,
+        option: 'pastEvents'
     }
 };

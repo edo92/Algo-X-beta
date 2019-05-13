@@ -22,7 +22,6 @@ const PastEvent = props => {
                     </li>
                 </ul>
             </div>
-            
             <div className='col-12 p-1'>
                 <div id='content-body' className='row col-12 p-1 m-0'>
                     <div className='col-12 col-md-6 p-1'>

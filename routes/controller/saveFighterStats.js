@@ -3,7 +3,6 @@ const docId = '5cd4ad19e7179a2e1964ee86';
 
 module.exports = async ( stats ) => {
     const db = require('../../models/index');
-    db.Statistics.create({})
     makeObject( stats ).forEach( async item=> {
         try{
             let isExists = await isFighter( item );
@@ -18,7 +17,7 @@ module.exports = async ( stats ) => {
             { _id: docId },
             { Fighter:{ $elemMatch:{ name: item.name}}}
         );
-        if( check[0].Fighter ){ return true }
+        if( check[0]){ return true }
         else return false;
     };
 

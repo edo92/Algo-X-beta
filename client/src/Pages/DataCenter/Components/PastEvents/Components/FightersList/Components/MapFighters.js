@@ -27,7 +27,7 @@ const MapFighters = props => {
                             <PointsInput 
                                 name={ fighter.name }
                                 handleInputs={ handleInputs } 
-                                option={'PAST'}
+                                option={'pastEvents'}
                             />
                         </li>
                     </ul> 

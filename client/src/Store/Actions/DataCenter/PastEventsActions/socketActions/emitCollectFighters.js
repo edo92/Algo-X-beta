@@ -28,7 +28,8 @@ const loadingProgress = ( progress, loadMessage ) => {
         type: PROGRESS_LOADING,
         progress,
         loadMessage,
-        loadingStatus: true
+        loadingStatus: true,
+        option:'pastEvents'
     }
 };
 

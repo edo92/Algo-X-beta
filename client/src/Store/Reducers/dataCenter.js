@@ -1,7 +1,7 @@
 import { 
     PAST_EVENTS, UPCOMING_EVENT, NEXT_LOAD, ERROR_OCCURED,
     EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT, EVENT_SAVED,
-    HANDLE_INPUT_UPCOME, HANDLE_INPUT_PAST
+    HANDLE_INPUT_POINTS
 } from '../Actions/DataCenter/actionTypes';
  
 const initialState = {
@@ -13,7 +13,8 @@ const initialState = {
     },
     upcomeEvent: {
         upcomeEvent: {},
-        inputPoints: {}
+        inputPoints: {},
+        progress: 0,
     }
 };
 
@@ -73,16 +74,7 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }
 
-    case PROGRESS_LOADING:
-        return{
-            ...state,
-            pastEvents: {
-                ...state.pastEvents,
-                progress: state.pastEvents.progress + action.progress,
-                loadMessage: state.loadMessage !== action.loadMessage ? action.loadMessage : '',
-                loadingStatus: action.loadingStatus
-            }
-        }
+    
 
     case ERROR_OCCURED:
         return {
@@ -92,26 +84,8 @@ const dataCenter = ( state = initialState, action )=> {
                 errorMessage: action.errorOccured
             }
         }
-
-        case HANDLE_INPUT_PAST:
-        let pastInput = action.inputPoints;
-        console.log('action', action)
-        return {
-            ...state,
-            pastEvents: {
-                ...state.pastEvents,
-                inputPoints: {
-                    ...state.pastEvents.inputPoints,
-                    [pastInput.name]: {
-                        ...state.pastEvents.inputPoints[pastInput.name],
-                        [pastInput.placeholder]: pastInput.value,
-                    },
-                }
-            }
-        }
     
 // ----------> Upcoming Event State <----------
-
     case UPCOMING_EVENT:
         return {
             ...state,
@@ -120,26 +94,38 @@ const dataCenter = ( state = initialState, action )=> {
                 upcomeEvent: action.upcomeEvent
             }
         }
-    
-    case HANDLE_INPUT_UPCOME:
-    let upcomeInput = action.inputPoints;
 
-    console.log('action', action)
+// ----------> malicious actions <----------
+    case HANDLE_INPUT_POINTS:
+        let inputPoints = action.inputPoints;
+        let inputOption = action.option;
         return {
             ...state,
-            upcomeEvent: {
-                ...state.upcomeEvent,
+            [inputOption]: {
+                ...state[inputOption],
                 inputPoints: {
-                    ...state.upcomeEvent.inputPoints,
-                    [upcomeInput.name]: {
-                        ...state.upcomeEvent.inputPoints[upcomeInput.name],
-                        [upcomeInput.placeholder]: upcomeInput.value,
+                    ...state[inputOption].inputPoints,
+                    [inputPoints.name]: {
+                        ...state[inputOption].inputPoints[inputPoints.name],
+                        [inputPoints.placeholder]: inputPoints.value,
                     },
                 }
             }
         }
 
- 
+    case PROGRESS_LOADING:
+        let progOption = action.option;
+        return {
+            ...state,
+            [progOption]: {
+                ...state[progOption],
+                progress: state[progOption].progress + action.progress,
+                loadMessage: state.loadMessage !== action.loadMessage ? action.loadMessage : '',
+                loadingStatus: action.loadingStatus
+            }
+        }
+
+
         default:
             return state;
     

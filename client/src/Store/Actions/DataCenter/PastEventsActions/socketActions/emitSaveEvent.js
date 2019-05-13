@@ -1,11 +1,11 @@
 import { PROGRESS_LOADING, EVENT_SAVED } from '../../actionTypes';
 
 import io from 'socket.io-client';
-let socket = io.connect( 'algo-x-beta.herokuapp.com' );
+let socket = io.connect( 'http://localhost:3000' );
 //algo-x-beta.herokuapp.com
 
 export const emitSaveEvent = ( event ) => {
-    let { eventList, eventInfo }  = event;
+    let { eventList, eventInfo } = event;
     let emintObj = { someId:'someId', eventList, eventInfo };
     if( event ) socket.emit('saveEvent', emintObj );
 };
@@ -20,7 +20,7 @@ export const listenSaveProgress = dispatch => {
         }
     });
 };
-
+ 
 const eventSaved = success => {
     return{
         type: EVENT_SAVED,
@@ -32,6 +32,7 @@ const progressLoading = progress => {
         type: PROGRESS_LOADING,
         progress: progress,
         loadingStatus: true,
-        loadMessage: 'Loading...'
+        loadMessage: 'Loading...',
+        option: 'pastEvents'
     }
 };

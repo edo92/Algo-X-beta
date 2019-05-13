@@ -1,7 +1,10 @@
 import { emitSaveUpcomeEvent } from '../socketActions/emitSaveUpcome';
+import { PROGRESS_LOADING } from '../../actionTypes';
 
 export const submitUpcomeEvent = () => {
     return ( dispatch, getState ) => {
+        dispatch( setLoadingMode());
+
         let { inputPoints, upcomeEvent } = getState().dataCenter.upcomeEvent;
         
         let fighterList = upcomeEvent.fighterList;
@@ -13,7 +16,15 @@ export const submitUpcomeEvent = () => {
     }
 }
 
-
+const setLoadingMode = () => {
+    return{
+        type: PROGRESS_LOADING,
+        loadingStatus: true,
+        loadMessage:'Initializing',
+        progress: 0,
+        option: 'upcomeEvent'
+    }
+};
 const combineResultInputs = ( input, list ) => {
     let result=[];
     for( let i in list ){
@@ -23,4 +34,4 @@ const combineResultInputs = ( input, list ) => {
         });
     }
     return result;       
-}; 
+};  

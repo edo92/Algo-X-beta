@@ -1,10 +1,10 @@
 import { SELECT_EVENT } from '../../actionTypes';
 import { emitCollectFighters } from '../socketActions/index';
 
-export const getEventFighters = ( url, eventInfo ) => {
+export const getEventFighters = ( eventInfo ) => {
     return dispatch => {
         dispatch( loading( eventInfo )); // Set collect fighter-list Progress 
-        emitCollectFighters( url ); // emit to collect past event fighters list
+        emitCollectFighters( eventInfo.url ); // emit to collect past event fighters list
     }
 }
 const loading = selected => {
