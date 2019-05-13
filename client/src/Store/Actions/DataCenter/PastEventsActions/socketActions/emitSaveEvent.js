@@ -1,7 +1,7 @@
 import { PROGRESS_LOADING, EVENT_SAVED } from '../../actionTypes';
 
 import io from 'socket.io-client';
-let socket = io.connect( 'http://localhost:3000' );
+let socket = io.connect( 'algo-x-beta.herokuapp.com' );
 //algo-x-beta.herokuapp.com
 
 export const emitSaveEvent = ( event ) => {

@@ -50,7 +50,6 @@ const EventInfo = () => {
                     </div>
                 </li>
             </ul>
-
             <div className='row col-12 p-0 m-0 list-none visible-md'>
                 <div className='col-12 p-2'>
                     <div className='col-12 p-0 container-style ov-hidden'>
