@@ -1,5 +1,12 @@
-export const handleInputs = (e) => {
+export const handleInputs = ( e, option ) => {
+
+    let { name, placeholder, value } = e.target;
+    let inputPoints = { name, placeholder, value: parseInt(value) };
+
     return dispatch => {
-        console.log('event', e )
+        dispatch({
+            type: `HANDLE_INPUT_${option}`,
+            inputPoints
+        });
     }
-}
+}; 

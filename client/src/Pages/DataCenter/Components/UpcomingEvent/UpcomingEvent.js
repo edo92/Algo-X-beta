@@ -8,7 +8,7 @@ import { handleInputs } from '../../../../Store/Actions/DataCenter/HandleInputs/
 
 import FighterList from './Components/FighterList/FighterList';
 import UpcomEventInfo from './Components/UpcomEventInfo/UpcomEventInfo';
-import { emitSaveUpcomeEvent } from '../../../../Store/Actions/DataCenter/UpcomingEvent/socketActions/emitSaveUpcome';
+import { submitUpcomeEvent } from '../../../../Store/Actions/DataCenter/UpcomingEvent/SubmitEvent/SubmitEvent';
 
 class UpcomingEvent extends React.Component{
     constructor(props){
@@ -21,7 +21,7 @@ class UpcomingEvent extends React.Component{
     }
 
     render(){
-        let { upcomeEvent, saveUpcomeEvenet, pointsHandleInput } = this.props;
+        let { upcomeEvent, saveUpcomeEvent, pointsHandleInput } = this.props;
         return(
             <div id='content-body' className='row col-12 p-0 m-0'>
                 <div className='row col-12 p-2 m-0 pt-3 mt-3 justify-content-center'>
@@ -44,7 +44,7 @@ class UpcomingEvent extends React.Component{
                             <Divider className='mt-0 mb-3'/>
                             <FighterList
                                 fighters={ upcomeEvent.fighterList }
-                                saveUpcome={ saveUpcomeEvenet }
+                                saveUpcome={ saveUpcomeEvent }
                                 handleInputs={ pointsHandleInput }
                             />
                         </div>
@@ -56,6 +56,7 @@ class UpcomingEvent extends React.Component{
 };
 
 const mapStateToProps = state => {
+    console.log('state', state )
     return {
         upcomeEvent: state.dataCenter.upcomeEvent.upcomeEvent
     }
@@ -63,8 +64,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return{ 
         upcomingEvent: ()=> dispatch( getUpcomingEvent()),
-        pointsHandleInput: (e)=> dispatch( handleInputs(e)),
-        saveUpcomeEvenet: ()=> dispatch( emitSaveUpcomeEvent ),
+        pointsHandleInput: (e,o)=> dispatch( handleInputs(e,o)),
+        saveUpcomeEvent: ()=> dispatch( submitUpcomeEvent() ),
     };
 };
 export default connect( mapStateToProps, mapDispatchToProps )( UpcomingEvent );

@@ -26,7 +26,8 @@ const MapFighters = props => {
                         <li className='col-6 p-1'>
                             <PointsInput 
                                 name={ fighter.name }
-                                handleInputs={ handleInputs }
+                                handleInputs={ handleInputs } 
+                                option={'PAST'}
                             />
                         </li>
                     </ul> 

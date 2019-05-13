@@ -43,6 +43,7 @@ const PastEventsList = props => {
 }
 
 const mapStateToprops = state => {
+    console.log('state', state )
     return{
         pastEvents: state.dataCenter.pastEvents.pastEventsList,
         loadNext: state.dataCenter.pastEvents.loadNext,

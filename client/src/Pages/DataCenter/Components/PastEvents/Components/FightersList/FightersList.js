@@ -7,7 +7,7 @@ import './assets/CSS/FightersList.css';
 import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
 import MapFighters from './Components/MapFighters';
 
-import { submitEvent } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
+import { submitPastEvent } from '../../../../../../Store/Actions/DataCenter/PastEventsActions/index';
 import { handleInputs } from '../../../../../../Store/Actions/DataCenter/HandleInputs/HandleInputs';
 
 const EventFightersList = props => {
@@ -50,8 +50,8 @@ const mapStateToprops = state => {
 }
 const mapDispatchToprops = dispatch => {
     return{ 
-        handleInputs: (e) => dispatch( handleInputs(e)),
-        saveEvent: (selct) => dispatch( submitEvent(selct))
+        handleInputs: (e,o) => dispatch( handleInputs(e,o)),
+        saveEvent: (selct) => dispatch( submitPastEvent(selct))
     };
 };
 export default connect( mapStateToprops, mapDispatchToprops )( EventFightersList );

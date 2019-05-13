@@ -1,12 +1,12 @@
 import { PROGRESS_LOADING } from '../../actionTypes';
 import { emitSaveEvent } from '../socketActions/emitSaveEvent';
 
-export const submitEvent = eventInfo => {
+export const submitPastEvent = eventInfo => {
     return async ( dispatch, getState ) => {
         dispatch( setLoadingMode());
 
-        let { resultInput, fighterList } = getState().dataCenter.pastEvents;
-        let eventList = combineResultInputs( resultInput, fighterList );
+        let { inputPoints, fighterList } = getState().dataCenter.pastEvents;
+        let eventList = combineResultInputs( inputPoints, fighterList );
 
         emitSaveEvent({ eventList, eventInfo });
     }

@@ -29,9 +29,10 @@ const FighterList = props => {
                                     </ul>
                                 </div>
                                 <div className='row col-6 m-0 p-0 list-none'>
-                                    <PointsInput
+                                    <PointsInput 
                                         name={ name }
                                         handleInputs={ handleInputs }
+                                        option={'UPCOME'}
                                     />
                                 </div>
                             </div>

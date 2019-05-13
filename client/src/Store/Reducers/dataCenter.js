@@ -1,7 +1,7 @@
 import { 
-    PAST_EVENTS, UPCOMING_EVENT, NEXT_LOAD, ERROR_OCCURED,HANDLE_INPUT_PAST_EVENT,
-    EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT,UPCOME_EVENT_HANDLEINPUTS,
-    EVENT_SAVED
+    PAST_EVENTS, UPCOMING_EVENT, NEXT_LOAD, ERROR_OCCURED,
+    EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT, EVENT_SAVED,
+    HANDLE_INPUT_UPCOME, HANDLE_INPUT_PAST
 } from '../Actions/DataCenter/actionTypes';
  
 const initialState = {
@@ -9,11 +9,11 @@ const initialState = {
         pastEventsList:[],
         eventPage: 0,
         progress: 0,
-        resultInput:{},
+        inputPoints:{},
     },
     upcomeEvent: {
         upcomeEvent: {},
-        inputData: {}
+        inputPoints: {}
     }
 };
 
@@ -84,22 +84,6 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }
 
-    case HANDLE_INPUT_PAST_EVENT:
-        let { name, placeholder, value } = action.input;
-        return {
-            ...state,
-            pastEvents: {
-                ...state.pastEvents,
-                resultInput: {
-                    ...state.pastEvents.resultInput,
-                    [name]: {
-                        ...state.pastEvents.resultInput[name],
-                        [placeholder]: value,
-                    },
-                }
-            }
-        }
-
     case ERROR_OCCURED:
         return {
             ...state,
@@ -109,7 +93,23 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }
 
-
+        case HANDLE_INPUT_PAST:
+        let pastInput = action.inputPoints;
+        console.log('action', action)
+        return {
+            ...state,
+            pastEvents: {
+                ...state.pastEvents,
+                inputPoints: {
+                    ...state.pastEvents.inputPoints,
+                    [pastInput.name]: {
+                        ...state.pastEvents.inputPoints[pastInput.name],
+                        [pastInput.placeholder]: pastInput.value,
+                    },
+                }
+            }
+        }
+    
 // ----------> Upcoming Event State <----------
 
     case UPCOMING_EVENT:
@@ -121,16 +121,25 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }
     
-    case UPCOME_EVENT_HANDLEINPUTS:
+    case HANDLE_INPUT_UPCOME:
+    let upcomeInput = action.inputPoints;
+
+    console.log('action', action)
         return {
             ...state,
             upcomeEvent: {
                 ...state.upcomeEvent,
-                inputData: action.input
+                inputPoints: {
+                    ...state.upcomeEvent.inputPoints,
+                    [upcomeInput.name]: {
+                        ...state.upcomeEvent.inputPoints[upcomeInput.name],
+                        [upcomeInput.placeholder]: upcomeInput.value,
+                    },
+                }
             }
         }
 
-
+ 
         default:
             return state;
     
