@@ -30,7 +30,6 @@ class EventsList extends React.Component {
             return (
                 <ul className='row col-12 p-1 m-0 mb-1 list-none' id='event-col'
                     style={ state[mainEvent] }
-                    key={ mainEvent }
                     onClick={ ()=> this.selectHandler(props.event) } 
                 >
                     { props.children }
@@ -42,10 +41,10 @@ class EventsList extends React.Component {
 
         return(
             <div className='col-12 p-02'>
-                { pastEvents && pastEvents.map(( event ) => {
+                { pastEvents && pastEvents.map(( event,i ) => {
                     let { eventName, mainEvent, url, date } = extractData( event );
                     return(
-                        <List event={{ eventName, mainEvent, date, url }}>
+                        <List key={ mainEvent+i } event={{ eventName, mainEvent, date, url }}>
                             <li className='col-1 p-1'>
                                 { event.ownEvent ? 
                                 <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" />

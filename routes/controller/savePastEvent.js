@@ -1,10 +1,8 @@
 const db = require('../../models/index');
 
 module.exports = async ( event ) => { 
-    console.log('checking imp' , event )
-
     let { eventList, eventInfo } = event;
-    let { eventName, mainEvent, date } = eventInfo;
+    let { eventName, date, mainEvent } = eventInfo;
     try{
         let saved = await db.Events.create({
             EventName: `${eventName}:${mainEvent}`,

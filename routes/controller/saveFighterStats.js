@@ -1,13 +1,13 @@
+const db = require('../../models/index');
 const docId = '5cd4ad19e7179a2e1964ee86';
-//5cd2403be7179a2e19638c95
 
 module.exports = async ( stats ) => {
-    const db = require('../../models/index');
-    makeObject( stats ).forEach( async item=> {
+    console.log('states', stats )
+    makeObject( stats ).forEach( async item => {
         try{
             let isExists = await isFighter( item );
             // if fighter exists overwrite else addtoset
-            if( isExists )  replaceSet( item );
+            if( isExists ) replaceSet( item );
             else addToSet( item );
         } catch ( err ){ throw err };
     });
@@ -17,25 +17,21 @@ module.exports = async ( stats ) => {
             { _id: docId },
             { Fighter:{ $elemMatch:{ name: item.name}}}
         );
-        if( check[0]){ return true }
+        if( check[0] ){ return true }
         else return false;
     };
 
     async function replaceSet( item ){
         await db.Statistics.findOneAndUpdate(
-            { 
-                _id: docId,
-                Fighter:{ $elemMatch:{ name: item.name }}
-            },
+            {_id: docId,
+            Fighter:{ $elemMatch:{ name: item.name }}},
             { $set:{ 'Fighter.$': item }}
         );
     };
 
     async function addToSet( item ){
         await db.Statistics.findOneAndUpdate(
-            { 
-                _id: docId,
-            },
+            { _id: docId },
             { $push:{ Fighter: item }}
         );
     };

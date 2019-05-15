@@ -4,6 +4,7 @@ import './Components/GlobalCSS/GlobalCSS.css';
 
 import HomePage from './Pages/HomePage/HomePage';
 import DataCenter from './Pages/DataCenter/DataCenter';
+import Lineup from './Pages/Lineup/Lineup';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ class App extends Component {
             <Switch>  
                 <Route exact path='/' component={ HomePage }/>
                 <Route exact path='/datacenter' component={ DataCenter }/>
+                <Route exact path='/lineup' component={ Lineup }/>
             </Switch>
         </Router>
       </div>

@@ -4,7 +4,6 @@ import { emitSaveEvent } from '../socketActions/emitSaveEvent';
 export const submitPastEvent = eventInfo => {
     return async ( dispatch, getState ) => {
         dispatch( setLoadingMode());
-        console.log('eventInfo', eventInfo)
         let { inputPoints, fighterList } = getState().dataCenter.pastEvents;
         let eventList = combineResultInputs( inputPoints, fighterList );
 
