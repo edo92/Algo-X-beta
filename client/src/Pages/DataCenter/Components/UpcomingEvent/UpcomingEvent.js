@@ -58,11 +58,11 @@ class UpcomingEvent extends React.Component{
 };
 
 const mapStateToProps = state => {
-    console.log('state', state )
+    let upcomeState = state.dataCenter.upcomeEvent;
     return {
-        upcomeEvent: state.dataCenter.upcomeEvent.upcomeEvent,
-        progress: state.dataCenter.upcomeEvent.progress,
-        loadingStatus: state.dataCenter.upcomeEvent.loadingStatus,
+        upcomeEvent: upcomeState.upcomeEvent,
+        progress: upcomeState.progress,
+        loadingStatus: upcomeState.loadingStatus,
     }
 };
 const mapDispatchToProps = dispatch => {
