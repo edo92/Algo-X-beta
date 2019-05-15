@@ -10,7 +10,7 @@ export const emitSaveUpcomeEvent = event => {
 
 export const listenCollectProgress = dispatch => {
     socket.on('saveUpcomeEvent', data => {
-      
+      console.log('data checking imp', data )
     }) 
 };
 
