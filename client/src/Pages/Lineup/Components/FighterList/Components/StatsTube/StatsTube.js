@@ -10,7 +10,7 @@ const StatsTube = props => {
             trigger='click'
             visible={ props.openTube[props.fighter.name] }
             content={
-                <ContentStats stast={ props.stast } fighter={ props.fighter } />
+                <ContentStats stats={ props.stats } fighter={ props.fighter } />
             }
         >
             <Icon onClick={ ()=> props.openClose( props.fighter.name ) } type="info-circle" />

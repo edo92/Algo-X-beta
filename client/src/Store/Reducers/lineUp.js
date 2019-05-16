@@ -39,10 +39,7 @@ const lineUp = ( state = initialState, action ) => {
                 openTube: {
                     [action.fighter]: true
                 },
-                stats: {
-                    fighter: action.stats,
-                    opponent: false
-                }
+                stats: action.stats
             }
         }
 
