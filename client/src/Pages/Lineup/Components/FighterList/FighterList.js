@@ -21,6 +21,7 @@ const FighterList = props => {
                                 fighter={ fighter }
                                 openClose={ props.statsTubeOpenClose }
                                 openTube={ props.openTube }
+                                stats={ props.stats }
                             />
                         </li>
                         <li className='col-3 p-0'>
@@ -48,7 +49,9 @@ const mapStateToProps = state => {
     console.log('state', state )
     return {
         fighters: state.lineUp.upcomeEvent.fighters,
-        openTube: state.lineUp.fighterStats.openTube
+        openTube: state.lineUp.fighterStats.openTube,
+        stats: state.lineUp.fighterStats.stats,
+        
     }
 };
 const mapDispatchToProps = dispatch => {

@@ -6,11 +6,11 @@ import ContentStats from './Components/ContentStats';
 const StatsTube = props => {
     return(
         <Popover 
-            placement='right' title='Title'
+            placement='right' title={ props.fighter.name }
             trigger='click'
             visible={ props.openTube[props.fighter.name] }
             content={
-                <ContentStats fighter={ props.fighter} />
+                <ContentStats stast={ props.stast } fighter={ props.fighter } />
             }
         >
             <Icon onClick={ ()=> props.openClose( props.fighter.name ) } type="info-circle" />
