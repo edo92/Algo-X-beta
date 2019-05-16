@@ -15,7 +15,7 @@ const ContentStats = props => {
     return(
         <div className='col-12 p-0'>
                 <ul className='col-12 p-0 m-0 list-none'>
-                    <BasicStats stats={ props.stats.BasicStats }/>
+                    <BasicStats stats={ props.stats.basic }/>
                 </ul>
             </div>
     )

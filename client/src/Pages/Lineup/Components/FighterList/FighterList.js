@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { Icon } from 'antd';
+
 import OptionBtns from './Components/OptionBtns/OptionBtns';
 import BasicInfo from './Components/BasicInfo/BasicInfo';
 import StatsTube from './Components/StatsTube/StatsTube';
@@ -39,7 +41,11 @@ const FighterList = props => {
                         </li>
                     </ul>
                 )
-            }) : null }
+            }) : 
+            <div className='col-12 text-center'>
+                <Icon className='pt-4' style={{fontSize:'125px'}} type="loading" />
+            </div>
+        }
         </div>
     )
 }
