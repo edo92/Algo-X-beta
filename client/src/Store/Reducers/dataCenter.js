@@ -1,7 +1,7 @@
 import { 
     PAST_EVENTS, UPCOMING_EVENT, NEXT_LOAD, ERROR_OCCURED,
-    EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT, EVENT_SAVED,
-    HANDLE_INPUT_POINTS
+    EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT, PAST_EVENT_SAVED,
+    HANDLE_INPUT_POINTS, UPCOME_EVENT_SAVED
 } from '../Actions/DataCenter/actionTypes';
  
 const initialState = {
@@ -18,7 +18,7 @@ const initialState = {
     }
 };
 
-const dataCenter = ( state = initialState, action )=> {
+const dataCenter = ( state = initialState, action ) => {
     switch( action.type ){
     
 // ----------> Past Event State <----------
@@ -65,15 +65,19 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }     
 
-    case EVENT_SAVED:
+    case PAST_EVENT_SAVED:
+        let selIndex = state.pastEvents.selectedEvent.index;
         return {
             ...state,
             pastEvents: {
                 ...state.pastEvents,
                 loadingStatus: false,
+                pastEventsList: [
+                    ...state.pastEvents.pastEventsList[selIndex].ownEvent = true, 
+                    ...state.pastEvents.pastEventsList,
+                ]
             }
         }
-
     
 
     case ERROR_OCCURED:
@@ -95,6 +99,16 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }
 
+    case UPCOME_EVENT_SAVED:
+        return {
+            ...state,
+            upcomeEvent: {
+                ...state.upcomeEvent,
+                loadingStatus: false,
+            }
+        }
+
+        
 // ----------> malicious actions <----------
     case HANDLE_INPUT_POINTS:
         let inputPoints = action.inputPoints;
@@ -125,7 +139,7 @@ const dataCenter = ( state = initialState, action )=> {
             }
         }
 
-
+        
         default:
             return state;
     

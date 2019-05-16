@@ -9,7 +9,8 @@ export const EVENT_FIGHTERS = 'EVENT_FIGHTERS';
 
 // -- socket actions
 export const SUBMIT_EVENT = 'SUBMIT_EVENT';
-export const EVENT_SAVED = 'EVENT_SAVED';
+export const PAST_EVENT_SAVED = 'PAST_EVENT_SAVED';
+export const UPCOME_EVENT_SAVED = 'UPCOME_EVENT_SAVED';
 
 export const HANDLE_INPUT_POINTS= 'HANDLE_INPUT_POINTS';
 

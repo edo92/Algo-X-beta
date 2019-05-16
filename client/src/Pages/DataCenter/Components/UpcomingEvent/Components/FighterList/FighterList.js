@@ -4,6 +4,8 @@ import './assets/CSS/FighterList.css';
 
 import PointsInput from '../../../PointsInput/PointsInput';
 import ProgressLoading from '../../../../../../Components/ProgressLoading/ProgressLoading';
+import LoadingIcon from '../../../../../../Components/LoadingIcon/LoadingIcon';
+import EmptySkeleton from '../../../../../../Components/EmptySkeleton/EmptySkeleton';
 
 const FighterList = props => {
     let { fighters, saveUpcome, handleInputs, progress, loadingStatus } = props;
@@ -47,6 +49,12 @@ const FighterList = props => {
                     </div>    
                 </div>   
             </div>
+            { !fighters && <div className='col-12 p-0'>
+                <div className='col-12 p-2 text-center pos-absolute'>
+                    <EmptySkeleton className='pos-absolute opacity-50'/>
+                    <LoadingIcon size={'large'}/>
+                </div>
+            </div> }
             <div className='col-12 p-0 pos-absolute pt-2 text-center'>
                 <ProgressLoading
                     progress={ progress }

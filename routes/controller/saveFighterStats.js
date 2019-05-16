@@ -2,10 +2,10 @@ const db = require('../../models/index');
 const docId = '5cd4ad19e7179a2e1964ee86';
 
 module.exports = async ( stats ) => {
+    // if fighter exists overwrite else addtoset
     makeObject( stats ).forEach( async item => {
         try{
             let isExists = await isFighter( item );
-            // if fighter exists overwrite else addtoset
             if( isExists ) replaceSet( item );
             else addToSet( item );
         } catch ( err ){ throw err };

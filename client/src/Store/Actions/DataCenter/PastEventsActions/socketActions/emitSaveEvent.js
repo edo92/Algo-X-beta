@@ -1,8 +1,6 @@
-import { PROGRESS_LOADING, EVENT_SAVED } from '../../actionTypes';
-
+import { PROGRESS_LOADING, PAST_EVENT_SAVED } from '../../actionTypes';
 import io from 'socket.io-client';
 let socket = io.connect( 'algo-x-beta.herokuapp.com' );
-//algo-x-beta.herokuapp.com
 
 export const emitSaveEvent = ( event ) => {
     let { eventList, eventInfo } = event;
@@ -23,8 +21,8 @@ export const listenSaveProgress = dispatch => {
  
 const eventSaved = success => {
     return{
-        type: EVENT_SAVED,
-        loadingStatus: false
+        type: PAST_EVENT_SAVED,
+        loadingStatus: false,
     }
 };
 const progressLoading = progress => {

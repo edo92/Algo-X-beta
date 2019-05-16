@@ -9,6 +9,7 @@ import { handleInputs } from '../../../../../../Store/Actions/DataCenter/HandleI
 
 import ProgressLoading from '../../../../../../Components/ProgressLoading/ProgressLoading';
 import PointsInput from '../../../PointsInput/PointsInput';
+import EmptySkeleton from '../../../../../../Components/EmptySkeleton/EmptySkeleton';
 
 const EventFightersList = props => {
     let { loadMessage ,loadingStatus, progress, handleInputs, fighterList, saveEvent, selectedEvent } = props;
@@ -43,7 +44,7 @@ const EventFightersList = props => {
                                 </li>
                             </ul> 
                         )
-                    }) : null }
+                    }) : <EmptySkeleton className='pt-4 opacity-50'/> }
                     <div className='col-12 p-0'>
                         { fighterList ? <div className='pt-3'>
                             <a onClick={ ()=> saveEvent( selectedEvent ) } className='col-12 btn btn-light bttn-submit'>Submit</a>

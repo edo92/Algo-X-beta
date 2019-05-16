@@ -77,3 +77,16 @@
     bottom: 0;
     color:#fff;
 }
+
+/* ---> Opacity <--- */
+.opacity-50{
+    opacity: .5;
+}
+
+.h-100{
+    height: 100%;
+}
+
+.space-between{
+    justify-content: space-between;
+}

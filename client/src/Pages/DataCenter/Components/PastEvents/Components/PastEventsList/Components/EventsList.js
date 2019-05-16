@@ -41,10 +41,10 @@ class EventsList extends React.Component {
 
         return(
             <div className='col-12 p-02'>
-                { pastEvents && pastEvents.map(( event,i ) => {
+                { pastEvents && pastEvents.map(( event,index ) => {
                     let { eventName, mainEvent, url, date } = extractData( event );
                     return(
-                        <List key={ mainEvent+i } event={{ eventName, mainEvent, date, url }}>
+                        <List key={ mainEvent+index } event={{ eventName, mainEvent, date, url, index }}>
                             <li className='col-1 p-1'>
                                 { event.ownEvent ? 
                                 <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" />

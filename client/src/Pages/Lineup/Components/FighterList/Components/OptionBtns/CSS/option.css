@@ -1,0 +1,27 @@
+.fave-option{
+    background-color: transparent;
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+.fave-option-selected{
+    background-color: #007bff;
+    color: 'white';
+}
+
+.back-option{
+    border: 1px solid #ffc107;
+    color: #ffc107;
+}
+.back-option-selected{
+    background-color: #ffc107;
+    color: 'white';
+}
+
+.excl-option{
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+.excl-option-selected{
+    background-color: #dc3545;
+    color: 'white';
+}
