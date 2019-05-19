@@ -8,7 +8,7 @@ export const handleInputs = ( e, option ) => {
         dispatch({
             type: HANDLE_INPUT_POINTS,
             inputPoints,
-            option
+            option,
         });
     }
-}; 
+};  

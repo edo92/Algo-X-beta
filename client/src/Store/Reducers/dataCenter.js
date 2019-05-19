@@ -1,7 +1,7 @@
 import { 
     PAST_EVENTS, UPCOMING_EVENT, NEXT_LOAD, ERROR_OCCURED,
     EVENT_FIGHTERS, PROGRESS_LOADING, SELECT_EVENT, PAST_EVENT_SAVED,
-    HANDLE_INPUT_POINTS, UPCOME_EVENT_SAVED
+    HANDLE_INPUT_POINTS, UPCOME_EVENT_SAVED, PAST_INT_DATA
 } from '../Actions/DataCenter/actionTypes';
  
 const initialState = {
@@ -9,7 +9,8 @@ const initialState = {
         pastEventsList:[],
         eventPage: 0,
         progress: 0,
-        inputPoints:{},
+        inputPoints: {},
+        collectStats: {}
     },
     upcomeEvent: {
         upcomeEvent: {},
@@ -78,7 +79,15 @@ const dataCenter = ( state = initialState, action ) => {
                 ]
             }
         }
-    
+        
+    case PAST_INT_DATA:
+        return {
+            ...state,
+            pastEvents:{
+                ...state.pastEvents,
+                collectStats: action.collectStats
+            }
+        }
 
     case ERROR_OCCURED:
         return {

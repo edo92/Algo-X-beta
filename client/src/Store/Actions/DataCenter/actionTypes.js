@@ -5,6 +5,8 @@ export const ERROR_OCCURED = 'ERROR_OCCURED';
 export const PAST_EVENTS = 'PAST_EVENTS';
 export const EVENT_FIGHTERS = 'EVENT_FIGHTERS';
 
+export const PAST_INT_DATA = 'PAST_INT_DATA';
+
 // -- malicious actions
 
 // -- socket actions

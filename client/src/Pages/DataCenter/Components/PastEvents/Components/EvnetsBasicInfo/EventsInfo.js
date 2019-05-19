@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { Divider } from 'antd';
 import './assets/CSS/EventsInfo.css';
+
 import EventStats from './Components/EventStats/EventStats';
 import FightersStats from './Components/FighterStats/FightersStats';
 import AnalizedStats from './Components/Analized/AnalizedStats';
 
-const EventInfo = () => {
+const EventInfo = props => {
+    let stats = props.stats;
+
     return(
         <div id='past-stats-container' className='col-12 p-0'>
             <ul className='row col-12 p-0 m-0 list-none hidden-md'>
@@ -18,7 +22,7 @@ const EventInfo = () => {
                                 <Divider className='m-0 my-1'/>  
                             </div>
                             <div className='col-12 p-0'>
-                                <EventStats/>
+                                <EventStats eventSize={ stats.eventSize }/>
                             </div>
                         </div>
                     </div>
@@ -31,7 +35,7 @@ const EventInfo = () => {
                                 <Divider className='m-0 my-1'/>  
                             </div>
                             <div className='col-12 p-0'>
-                                <FightersStats/>
+                                <FightersStats fighterSize={ stats.fighterSize }/>
                             </div>
                         </div>
                     </div>
@@ -86,4 +90,10 @@ const EventInfo = () => {
     )
 }
 
-export default EventInfo;
+const mapStatToProps = state => {
+    console.log('state imp', state )
+    return{ 
+        stats: state.dataCenter.pastEvents.collectStats
+    };
+};
+export default connect( mapStatToProps, null )( EventInfo );

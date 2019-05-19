@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ContentStats = props => {
-
+    console.log('imp checkgn stats ----', props.stats )
     const BasicStats = stats => {
         for( let key in stats ){
             return(

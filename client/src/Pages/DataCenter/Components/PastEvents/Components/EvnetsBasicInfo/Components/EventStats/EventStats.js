@@ -1,8 +1,8 @@
 import React from 'react';
 
-const EventStats = () => {
+const EventStats = props => {
     return(
-        <p>Registered: 100</p>
+        <p>{`Registered: ${props.eventSize}`}</p>
     )
 }
 

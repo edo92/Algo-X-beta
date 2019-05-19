@@ -4,14 +4,23 @@ import { connect } from 'react-redux';
 import SideBar from '../../Components/SideBar/SideBar';
 import MenuDir from './Components/MenuDir/MenuDir';
 import FighterList from './Components/FighterList/FighterList';
-import MiniMenu from './Components/MiniMenu/MiniMenu';
 
 import { getUpcomeEvent } from '../../Store/Actions/LineUp/index';
+import Combinations from './Components/Combinations/Combinations';
 
 class Lineup extends React.Component {
+    state={
+        current: 'event'
+    }
 
     componentDidMount(){
         this.props.getUpcomeingEvent();
+    }
+
+    selectMenu = (e) => {
+        this.setState({
+            current: e.key
+        });
     }
 
     render(){
@@ -21,19 +30,18 @@ class Lineup extends React.Component {
                     <SideBar/>
                     <div className='col-10 p-0'>
                         <div className='col-12 p-0'>
-                            <MenuDir/>
+                            <MenuDir
+                                selectMenu={ this.selectMenu }
+                                selected={ this.state.current }
+                            />
                         </div>       
-                        <div className='col-12 p-2 bg-light h-100'>
+                        <div className='col-12 p-2 bg-light'>
                             <div className='col-12 p-0'>
-                                <div className='col-12 p-0 pb-2'>
-                                    <MiniMenu/>
-                                </div>
-                                <div className='col-12 p-0 container-style' style={{minHeight:'450px'}}>
-                                    <div className='col-12 p-0'>
-                                        <FighterList
-                                        />
-                                    </div>
-                                </div>
+                                { this.state.current === 'event' ?
+                                    <FighterList/>
+                                    : 
+                                    <Combinations/>
+                                }           
                             </div>
                         </div>
                     </div>
@@ -43,13 +51,9 @@ class Lineup extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-    }
-};
 const mapDispatchToProps = dispatch => {
     return {
         getUpcomeingEvent: ()=> dispatch( getUpcomeEvent())
     }
 };
-export default connect( mapStateToProps, mapDispatchToProps )( Lineup );
+export default connect( null, mapDispatchToProps )( Lineup );

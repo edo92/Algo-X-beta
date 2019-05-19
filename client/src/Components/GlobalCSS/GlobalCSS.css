@@ -90,3 +90,17 @@
 .space-between{
     justify-content: space-between;
 }
+
+/* ---> Custom padding <--- */
+.pt-015{
+    padding-top: .15rem !important;
+}
+.py-02{
+    padding-top: .2rem !important;
+    padding-bottom: .2rem !important;
+}
+
+/* ---> font <--- */
+.fontsize-13px{
+    font-size: 13px !important;
+}

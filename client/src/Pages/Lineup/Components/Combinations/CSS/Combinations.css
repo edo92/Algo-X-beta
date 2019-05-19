@@ -1,0 +1,12 @@
+ul {
+    list-style: none;
+}
+
+#empty-box .ant-empty-image {
+    height: 75px !important;
+}
+
+#combin-container {
+    height: 735px;
+}
+

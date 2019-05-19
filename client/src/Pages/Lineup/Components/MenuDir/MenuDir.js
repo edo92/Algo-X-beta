@@ -5,17 +5,18 @@ const MenuDir = props => {
     return(
         <div className='col-12 p-0 pt-1'>
             <Menu
-                onClick={ props.menuSelect }
-                mode='horizontal'
+                onClick={ props.selectMenu }
                 selectedKeys={ [props.selected] }
+                mode='horizontal'
             >
-                <Menu.Item key='past'>
-                    <Icon type='caret-left' />
-                    <span className='font-w-600'>Past Events</span>
+                <Menu.Item key='event'>
+                    <Icon type='link' />
+                    <span className='font-w-600'>Event</span>
                 </Menu.Item>
-                <Menu.Item key='upcoming'>
-                    <Icon type='caret-right' />
-                    <span className='font-w-600'>Upcoming Event</span>
+                
+                <Menu.Item key='combins'>
+                    <Icon type='share-alt' />
+                    <span className='font-w-600'>Combinations</span>
                 </Menu.Item>
             </Menu>
         </div>                         

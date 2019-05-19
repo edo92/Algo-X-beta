@@ -7,12 +7,12 @@ export const getUpcomeEvent = () => {
         let success = upcomeEvent.data.success;
 
         if( success ){
-            setTimeout(function(){ 
+            setTimeout(() => { 
                 dispatch({
                     type: UPCOME_EVENT,
                     upcomeEvent: success
                 });
-            }, 2500 );
+            }, 1800 );
         };
     };
 };

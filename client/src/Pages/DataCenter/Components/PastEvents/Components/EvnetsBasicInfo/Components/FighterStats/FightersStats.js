@@ -1,8 +1,8 @@
 import React from 'react';
 
-const FightersStats = () => {
+const FightersStats = props => {
     return(
-        <p>collected stats: 100</p>
+        <p>{`collected stats: ${props.fighterSize}`}</p>
     )
 }
 

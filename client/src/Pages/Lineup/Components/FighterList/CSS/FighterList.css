@@ -1,0 +1,14 @@
+#fighterList-container {
+    min-height: 635px;
+}
+
+#fighterList-container :first-child {
+    max-height: 601px;
+}
+
+.border-l {
+    border-left: 1px solid #D5DCE6;
+}
+.border-r {
+    border-left: 1px solid #D5DCE6;
+}
