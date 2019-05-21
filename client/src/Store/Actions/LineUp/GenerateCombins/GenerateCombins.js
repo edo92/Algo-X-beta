@@ -1,3 +1,4 @@
+import { COMBINATIONS } from '../actionTypes';
 import axios from 'axios';
 
 export const generateCombins = () => {
@@ -8,7 +9,7 @@ export const generateCombins = () => {
         combins = combins.data.success;
         if( combins ){
             dispatch({
-                type: 'COMBINATIONS',
+                type: COMBINATIONS,
                 combins: combins
             });
         };

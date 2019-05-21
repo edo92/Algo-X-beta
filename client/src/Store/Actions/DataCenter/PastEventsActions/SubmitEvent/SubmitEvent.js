@@ -4,14 +4,17 @@ import { emitSaveEvent } from '../socketActions/emitSaveEvent';
 export const submitPastEvent = eventInfo => {
     return async ( dispatch, getState ) => {
         dispatch( setLoadingMode());
-        let { inputPoints, fighterList } = getState().dataCenter.pastEvents;
-        let eventList = combineResultInputs( inputPoints, fighterList );
 
+        let eventList = combineResultInputs( getState );
         emitSaveEvent({ eventList, eventInfo });
     }
 };
 
-const combineResultInputs = ( input, list ) => {
+const combineResultInputs = ( getState ) => {
+    let event = getState().dataCenter.pastEvents;
+    let input = event.inputPoints;
+    let list = event.fighterList;
+
     let result=[];
     for( let i in list ){
         result.push({ 

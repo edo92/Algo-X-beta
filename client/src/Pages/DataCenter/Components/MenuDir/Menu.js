@@ -13,9 +13,15 @@ const MenuDir = props => {
                     <Icon type='caret-left' />
                     <span className='font-w-600'>Past Events</span>
                 </Menu.Item>
+
                 <Menu.Item key='upcoming'>
                     <Icon type='caret-right' />
                     <span className='font-w-600'>Upcoming Event</span>
+                </Menu.Item>
+
+                <Menu.Item key='saved'>
+                    <Icon type='caret-down' />
+                    <span className='font-w-600'>Saved Events</span>
                 </Menu.Item>
             </Menu>
         </div>                         

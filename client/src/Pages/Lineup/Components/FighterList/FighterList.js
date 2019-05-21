@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Icon } from 'antd';
 import './CSS/FighterList.css';
 
 import OptionBtns from './Components/OptionBtns/OptionBtns';
@@ -13,6 +12,7 @@ import { openStatsTube } from '../../../../Store/Actions/LineUp/OpenStatsTube/Op
 import { generateCombins } from '../../../../Store/Actions/LineUp/GenerateCombins/GenerateCombins';
 
 import MiniMenu from '../MiniMenu/MiniMenu';
+import CubeLoading from '../../../../Components/CubeLoading/CubeLoading';
 
 const FighterList = props => {
     let { fighters } = props;
@@ -51,8 +51,8 @@ const FighterList = props => {
                             </ul>
                         )
                     }) : 
-                    <div className='col-12 text-center'>
-                        <Icon style={{fontSize:'130px', opacity: .8, paddingTop:'6.5rem'}} type="loading" />
+                    <div className='col-12 text-center mt-7rem'>
+                        <CubeLoading/>
                     </div>
                 }
                 </div>

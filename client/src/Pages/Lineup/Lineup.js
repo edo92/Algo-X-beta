@@ -37,11 +37,8 @@ class Lineup extends React.Component {
                         </div>       
                         <div className='col-12 p-2 bg-light'>
                             <div className='col-12 p-0'>
-                                { this.state.current === 'event' ?
-                                    <FighterList/>
-                                    : 
-                                    <Combinations/>
-                                }           
+                                { this.state.current === 'event' && <FighterList/> } 
+                                { this.state.current === 'combins' && <Combinations/> }         
                             </div>
                         </div>
                     </div>

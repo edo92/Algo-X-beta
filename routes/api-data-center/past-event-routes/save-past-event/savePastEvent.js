@@ -11,6 +11,7 @@ module.exports = async ( io, event ) => {
             let fighterStats = await collectFighterStats( eventInfo.url, feedBack ); // scrape fighter stats
             let saveStats = await saveFighterStats( fighterStats ); // save scraped fighter's stats (diff doc)
             let savedData = await savePastEvent( event ); //save event fighters and stats
+
             feedBack({ success: 'saved' });
         } catch( err ) { throw err };
     }

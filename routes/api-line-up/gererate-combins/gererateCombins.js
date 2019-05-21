@@ -1,12 +1,12 @@
-const genPureCombins = require('../../../sa-algorithms/generateCombins/generateCombins');
-const combinSetup = require('../../../sa-algorithms/combinSetup/combinSetup');
+const generateCombins = require('../../../sa-algorithms/generateCombins/generateCombins');
 
 module.exports = ( app, db ) => {
     app.post('/generate/combinations/', async ( req, res ) => {
         let list = req.body.fighters;
-        let pureCombins = await genPureCombins( list );
-        let combins = combinSetup( pureCombins );
+        let setting = { auto: true };
 
-        res.status( 200 ).json({ success: 'combins' });
+        let combins = generateCombins( list, setting );
+
+        res.status( 200 ).json({ success: combins });
     });
 };

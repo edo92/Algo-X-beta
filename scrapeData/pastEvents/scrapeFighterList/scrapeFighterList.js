@@ -5,9 +5,9 @@ const countScore = require('../../../scrapeData/pastEvents/scrapeFighterList/com
 module.exports = async ( client, feedBack ) => {
     let url = client.url;
     try{
-        let links = await scrapeContestUrl( url, feedBack );
+        let intData = await scrapeContestUrl( url, feedBack );
 
-        let stats = await scrapeContestStats( links, feedBack );
+        let stats = await scrapeContestStats( intData, feedBack );
 
         let fullList = countScore( stats, feedBack );
 

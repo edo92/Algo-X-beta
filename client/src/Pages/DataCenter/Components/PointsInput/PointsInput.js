@@ -6,10 +6,10 @@ const PointsInput = props => {
 
     return (
         <ul className='row col-12 m-0 p-0 list-none'>
-            <li className='col-6 p-0'>
+            <li className='col-6 p-1'>
                 <Input onChange={ (e)=> handleInputs( e,option ) } name={ name } placeholder='price'/>
             </li>
-            <li className='col-6 p-0'>
+            <li className='col-6 p-1'>
                 <Input onChange={ (e)=> handleInputs( e,option ) } name={ name } placeholder='fttp'/>
             </li>
         </ul>

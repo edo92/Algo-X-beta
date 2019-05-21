@@ -1,4 +1,4 @@
-import { UPCOME_EVENT, SELECT_OPTION, OPEN_STATS_TUBE } from '../Actions/LineUp/actionTypes';
+import { UPCOME_EVENT, SELECT_OPTION, OPEN_STATS_TUBE, COMBINATIONS } from '../Actions/LineUp/actionTypes';
 
 const initialState = {
     upcomeEvent: {
@@ -7,6 +7,10 @@ const initialState = {
     fighterStats: {
         openTube:{},
         stats:{}
+    },
+    combins: {
+        settig: {},
+        cards: []
     }
 };
 
@@ -40,6 +44,15 @@ const lineUp = ( state = initialState, action ) => {
                     [action.fighter]: true
                 },
                 stats: action.stats
+            }
+        }
+
+    case COMBINATIONS:
+        return {
+            ...state,
+            combins: {
+                ...state.combins,
+                cards: action.combins
             }
         }
 

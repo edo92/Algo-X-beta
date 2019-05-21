@@ -10,6 +10,7 @@ import{ initialData } from '../../Store/Actions/DataCenter/PastEventsActions/ind
 import { getPastEvents } from '../../Store/Actions/DataCenter/PastEventsActions/index';
 import { listenCollectProgress } from '../../Store/Actions/DataCenter/PastEventsActions/socketActions/index';
 import { listenSaveProgress } from '../../Store/Actions/DataCenter/PastEventsActions/socketActions/emitSaveEvent';
+import SavedEvents from './Components/SavedEvents/SavedEvents';
 
 
 class DataCenter extends React.Component{
@@ -41,11 +42,9 @@ class DataCenter extends React.Component{
                             />
                         </div>
                         <div className='col-12 p-0'>
-                            { this.state.current === 'past' ?
-                                <PastEvent/>
-                                :
-                                <UpcomingEvent/>
-                            }       
+                            { this.state.current === 'past' && <PastEvent/> }
+                            { this.state.current === 'upcoming' && <UpcomingEvent/> }
+                            { this.state.current === 'saved' && <SavedEvents/> }
                         </div>
                     </div>
                 </div>

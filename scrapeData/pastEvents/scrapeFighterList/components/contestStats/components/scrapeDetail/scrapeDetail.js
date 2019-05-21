@@ -8,11 +8,6 @@ module.exports = ( $, result, feedBack ) => {
             return data.eq(w).text().replace(/\s\s+/g, ' ').trim();
         };
 
-        const weightClass = () => {
-            let weight = $(elem).children().find('i.b-fight-details__fight-title')
-            return weight.text().replace(/\s\s+/g, ' ').trim().split(' ')[0];
-        };
-
         const method = () => {
             let method = $(elem).children().find('i.b-fight-details__text-item_first').eq(0)
             return method.text().replace(/\s\s+/g, ' ').trim().split(' ')[1];
@@ -33,7 +28,7 @@ module.exports = ( $, result, feedBack ) => {
             }
         };
 
-        let obj = { result, getValue, weightClass, method, round, finishMethod };
+        let obj = { result, getValue, method, round, finishMethod };
         result = constractDetailObj( obj, feedBack );
     });
     

@@ -16,7 +16,7 @@ module.exports = async ( stats ) => {
             { _id: docId },
             { Fighter:{ $elemMatch:{ name: item.name}}}
         );
-        if( check[0].Fighter ){ return true }
+        if( check[0] && check[0].Fighter ){ return true }
         else return false;
     };
 
