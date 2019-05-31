@@ -1,0 +1,33 @@
+#alt-login-icons-cont li{
+    top: 50%;
+    padding: 10px 13px;
+    border-radius: 50%;
+    border: 1px solid rgb(239, 234, 234);
+    background: #fbfbfbcc;
+}
+
+#signin-top-logo{
+    border: 1px solid #367cff;
+    padding:13px 8px 13px 8px !important;
+    border-radius: 50%;
+}
+#signin-top-logo h4{
+    color: #85b0ff!important;
+    text-shadow: 1px 1px 1px #367cff;
+}
+
+#forgot-pass{
+    color:#bbbbbb;
+}
+#forgot-pass:hover{
+    text-decoration: underline;
+}
+
+.page-height{
+    height: 100vh !important;
+}
+@media all and (min-width: 0px) and (max-width: 768px) {
+    .page-height{
+        height: 51vh!important;
+    }
+}

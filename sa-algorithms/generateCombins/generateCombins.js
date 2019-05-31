@@ -3,9 +3,9 @@ const sortFighters = require('./utility/sortFighters/sortFighters');
 
 //const actions = require('./utility/maliciousActions/malicious');
 
-module.exports = ( list, setting ) => {
-    let sortedList = sortFighters( list );
-    //console.log('sortedList', sortedList );
+module.exports = ( fightersList, setting ) => {
+    let sortedList = sortFighters( fightersList );
 
-   // let combins = pureCombins( list );
+    //let combins = pureCombins( sortedList );
 };
+

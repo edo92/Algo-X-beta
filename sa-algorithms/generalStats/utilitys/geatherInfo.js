@@ -1,45 +1,41 @@
-module.exports = ( events, stats ) => {
-    let { winList, loseList } = separateArr( events );
+module.exports = ( events, statistics ) => {
+    let stats={};
+    function collectWinStats( event ){
+        if( !stats.weightClass ) stats.weightClass = {};
+        stats.weightClass[event.weightClass] = (stats.weightClass[event.weightClass] || 0) + 1;
 
-    let winners={}, losers={};
-    winners = countStats( winList, stats );
-    losers = countStats( loseList, stats );
-    
-    return winners;
-};
+        if( !stats.fttp ) stats.fttp = {};
+        stats.fttp[event.fttp] = (stats.fttp[10 * Math.round(event.fttp/10)] || 0) + 1;
 
-const countStats = ( events, stats ) => {
-    let weightClass={}, stance={}, age={}; slpm={};
-    for( let i in events ){
-        let method = events[i].outcome.mathod;
-        if( method !== 'Decision' ){
-            let wClass = events[i].weightClass;
-            weightClass[wClass] = (weightClass[wClass] || 0 ) + 1;
+        let fgSt = statistics[event.name];
 
-                let st = stats[events[i].name].basic.stance.stance
-                stance[st] = ( stance[st] || 0 ) + 1;
+        if( !stats.stance ) stats.stance = {};
+        stats.stance[fgSt.basic.stance.stance] = ( stats.stance[fgSt.basic.stance.stance] || 0 ) + 1;
 
-                let fgAge = stats[events[i].name].basic.age
-                age[fgAge] = ( age[fgAge] || 0 ) + 1;
-
-                let slpm = stats[events[i].name].careerStats.slpm;
-                slpm[statSlpm] = ( slpm[statSlpm] || 0 ) + 1;
-        };
+        if( !stats.age ) stats.age = {};
+        stats.age[fgSt.basic.age] = ( stats.stance[fgSt.basic.age] || 0 ) + 1;
     };
-    console.log('weight', slpm )
-    return { weightClass, stance, age };
-};
 
-
-const separateArr = ( events ) => {
-    let winList=[], loseList=[];
     for( let i in events ){
-        let outcome = events[i].outcome.finish;
-        if( outcome === 'W' ){
-            winList.push( events[i] );
-        } else {
-            loseList.push( events[i] );
-        };
+        let event = events[i];
+        let { finish, method } = events[i].outcome;
+        if( finish === 'W' && method !== 'Decision' ){
+            collectWinStats( event );
+        }
     };
-    return { winList, loseList };
+    return stats;
 };
+
+// stats.weightClass[data.weightClass] = ( stats.weightClass[data.weightClass] || 0 ) + 1;
+// stats.fttp[data.fttp] = ( stats.fttp[data.fttp] || 0 ) + 1;
+// stats.stance[fgSt.basic.stance.stance] = ( stats.stance[fgSt.basic.stance.stance] || 0 ) + 1;
+// stats.age[fgSt.basic.age] = ( stats.stance[fgSt.basic.age] || 0 ) + 1;
+
+// stats.careerSt.slpm[fgSt.careerStats.slpm] = ( stats.careerSt.slpm[fgSt.careerStats.slpm] || 0 ) + 1;
+// stats.careerSt.strAcc[fgSt.careerStats.strAcc] = ( stats.careerSt.strAcc[fgSt.careerStats.strAcc] || 0 ) + 1;
+
+// stats.careerSt.sapm[fgSt.careerStats.sapm] = ( stats.careerSt.sapm[fgSt.careerStats.sapm] || 0 ) + 1;
+// stats.careerSt.tdAvg[fgSt.careerStats.tdAvg] = ( stats.careerSt.tdAvg[fgSt.careerStats.tdAvg] || 0 ) + 1;
+// stats.careerSt.tdAcc[fgSt.careerStats.tdAcc] = ( stats.careerSt.tdAcc[fgSt.careerStats.tdAcc] || 0 ) + 1;
+// stats.careerSt.tdDef[fgSt.careerStats.tdDef] = ( stats.careerSt.tdDef[fgSt.careerStats.tdDef] || 0 ) + 1;
+// stats.careerSt.subAvg[fgSt.careerStats.subAvg] = ( stats.careerSt.subAvg[fgSt.careerStats.subAvg] || 0 ) + 1;

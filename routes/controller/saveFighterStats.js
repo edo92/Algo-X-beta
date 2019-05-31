@@ -1,5 +1,5 @@
 const db = require('../../models/index');
-const docId = '5cd4ad19e7179a2e1964ee86';
+const docId = '5ce5ba4fb347be11cdbf8f55';
 
 module.exports = async ( stats ) => {
     // if fighter exists overwrite else addtoset

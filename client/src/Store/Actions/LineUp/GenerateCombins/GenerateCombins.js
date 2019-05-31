@@ -10,9 +10,8 @@ export const generateCombins = () => {
         if( combins ){
             dispatch({
                 type: COMBINATIONS,
-                combins: combins
+                combins
             });
         };
-        
     };
 };

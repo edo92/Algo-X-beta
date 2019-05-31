@@ -6,7 +6,8 @@ module.exports = async () => {
     let statsList = stats[0].Fighter;
 
     let allStats={};
-    for( let i in statsList ){
+    // make object
+    for( let i in statsList ){ 
         let name = statsList[i].name;
         allStats[name] = statsList[i];
     };

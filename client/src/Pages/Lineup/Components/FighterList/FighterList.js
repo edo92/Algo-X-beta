@@ -63,7 +63,6 @@ const FighterList = props => {
 
 
 const mapStateToProps = state => {
-    console.log('state', state )
     let lineupState = state.lineUp; 
     return {
         fighters: lineupState.upcomeEvent.fighters,

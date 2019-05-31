@@ -10,6 +10,6 @@ module.exports = ( app, db ) => {
                     fighters: upcomeEvent.Fighter,
                 }});
             }
-        } catch ( error ) { throw erro };
+        } catch ( error ) { throw error };
     });
 };
